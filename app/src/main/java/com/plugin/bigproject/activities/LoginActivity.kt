@@ -3,13 +3,13 @@ package com.plugin.bigproject.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.plugin.bigproject.R
-import com.plugin.bigproject.databinding.ActivityMainBinding
+import com.plugin.bigproject.databinding.ActivityLoginBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
     }
