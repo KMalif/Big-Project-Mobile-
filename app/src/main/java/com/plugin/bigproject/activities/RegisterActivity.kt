@@ -1,5 +1,6 @@
 package com.plugin.bigproject.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.plugin.bigproject.R
@@ -12,5 +13,10 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        doRegister()
+    }
+
+    private fun doRegister(){
+        binding.btnRegister.setOnClickListener {finish()}
     }
 }

@@ -12,7 +12,7 @@
         />
 
     <item
-        android:id="@+id/icUser"
-        android:title="@string/User"
+        android:id="@+id/icProfile"
+        android:title="@string/Profile"
         />
 </menu>

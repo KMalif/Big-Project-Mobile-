@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
     }
     private fun splashScreen(){
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java).also { finish() })
         }, 3000)
     }
 }
