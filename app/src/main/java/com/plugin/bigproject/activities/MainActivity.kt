@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.ActivityMainBinding
+import com.plugin.bigproject.fragments.CameraFragment
 import com.plugin.bigproject.fragments.HomeFragment
+import com.plugin.bigproject.fragments.MapsFragment
 import com.plugin.bigproject.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
@@ -16,14 +18,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         bottomNavigatio()
+        setCurrentFragment(HomeFragment())
     }
 
     private fun bottomNavigatio(){
         binding.BottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.icHome -> setCurrentFragment(HomeFragment())
+                R.id.icCamera -> setCurrentFragment(CameraFragment())
+                R.id.icMaps -> setCurrentFragment(MapsFragment())
                 R.id.icProfile->setCurrentFragment(ProfileFragment())
-
             }
             true
         }
