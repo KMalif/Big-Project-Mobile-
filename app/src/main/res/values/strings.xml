@@ -22,4 +22,9 @@
     <string name="barberAddress">Tegal, Central Java</string>
     <string name="Maps">Maps</string>
     <string name="Placeholder">Placeholder</string>
+    <string name="ChooseImg">Choose Image</string>
+    <string name="Gallery">Gallery</string>
+    <string name="Camera">Camera</string>
+    <string name="Favorites">Favorites</string>
+    <string name="open_camera">open camera</string>
 </resources>

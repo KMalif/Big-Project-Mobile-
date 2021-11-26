@@ -13,9 +13,9 @@
         android:icon="@drawable/ic_maps"/>
 
     <item
-        android:id="@+id/icCamera"
-        android:title="@string/Predict"
-        android:icon="@drawable/ic_baseline_photo_camera_24"
+        android:id="@+id/icFavorites"
+        android:title="@string/Favorites"
+        android:icon="@drawable/ic_favorites"
         />
 
     <item
