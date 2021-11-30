@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.ActivityMainBinding
+import com.plugin.bigproject.fragments.FavoritesFragment
 import com.plugin.bigproject.fragments.HomeFragment
 import com.plugin.bigproject.fragments.ProfileFragment
 
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.icHome -> setCurrentFragment(HomeFragment())
 //                R.id.icMaps -> setCurrentFragment(MapsFragment())
+                R.id.icFavorites -> setCurrentFragment(FavoritesFragment())
                 R.id.icProfile->setCurrentFragment(ProfileFragment())
             }
             true
