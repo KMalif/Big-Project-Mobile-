@@ -1,9 +1,6 @@
 package com.plugin.bigproject.webservices
 
-import com.plugin.bigproject.models.BarberMan
-import com.plugin.bigproject.models.HairCuts
-import com.plugin.bigproject.models.Partners
-import com.plugin.bigproject.models.User
+import com.plugin.bigproject.models.*
 import com.plugin.bigproject.responses.WrappedListResponse
 import com.plugin.bigproject.responses.WrappedResponse
 import retrofit2.Call
@@ -11,7 +8,7 @@ import retrofit2.http.*
 
 interface APIServices {
 
-
+    //Sign in
     @FormUrlEncoded
     @POST("signin")
     fun login (
@@ -19,6 +16,7 @@ interface APIServices {
         @Field("password") password : String
     ):Call<WrappedResponse<User>>
 
+    //Sign up
     @FormUrlEncoded
     @POST("signup")
     fun register (
@@ -28,6 +26,7 @@ interface APIServices {
         @Field("password") password : String
     ):Call<WrappedResponse<User>>
 
+    //Edit profile
     @FormUrlEncoded
     @PUT("edit-profile/{id}")
     fun editProfile(
@@ -47,21 +46,29 @@ interface APIServices {
         @Field("email")  email: String,
     ): Call<WrappedResponse<User>>
 
+    //get Haircuts
     @GET("haircuts")
     fun getHaircuts(
 
     ): Call<WrappedListResponse<HairCuts>>
 
+    //get Partners
     @GET("partners")
     fun getPartners(
 
     ): Call<WrappedListResponse<Partners>>
 
+    //get barberman
     @GET("barberman/{id}")
     fun getbarberMan(
         @Path("id") id: String
     ): Call<WrappedListResponse<BarberMan>>
 
+    //get news
+    @GET("news")
+    fun getNews(
+
+    ):Call<WrappedListResponse<News>>
 
 
 
