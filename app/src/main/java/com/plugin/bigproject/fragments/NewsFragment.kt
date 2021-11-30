@@ -6,21 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.plugin.bigproject.R
-import com.plugin.bigproject.databinding.FragmentFavoritesBinding
+import com.plugin.bigproject.databinding.FragmentNewsBinding
 
 
-class FavoritesFragment : Fragment() {
-    private var _binding : FragmentFavoritesBinding? = null
+class NewsFragment : Fragment() {
+
+    private var _binding : FragmentNewsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        _binding = FragmentNewsBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
 

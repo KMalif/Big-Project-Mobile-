@@ -17,7 +17,7 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
     private var presenter : FragmentHomeContract.FragmentHomePresenter? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        presenter = FragmentHomePresenter(this)
+
         return binding.root
     }
 

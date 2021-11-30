@@ -8,15 +8,15 @@
         />
 
     <item
+        android:id="@+id/icNews"
+        android:title="@string/News"
+        android:icon="@drawable/ic_news"
+        />
+
+    <item
         android:id="@+id/icMaps"
         android:title="@string/Maps"
         android:icon="@drawable/ic_maps"/>
-
-    <item
-        android:id="@+id/icFavorites"
-        android:title="@string/Favorites"
-        android:icon="@drawable/ic_favorites"
-        />
 
     <item
         android:id="@+id/icProfile"

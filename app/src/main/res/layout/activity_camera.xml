@@ -34,7 +34,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/ic_upload"/>
+                    android:src="@drawable/ic_baseline_image_24"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fabSize="mini"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -44,7 +56,7 @@
         <Button
             android:id="@+id/BtnChooseImage"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/custom_card"
@@ -57,7 +69,7 @@
         <Button
             android:id="@+id/BtnCamera"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/custom_card"

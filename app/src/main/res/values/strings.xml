@@ -30,4 +30,13 @@
     <string name="Name">Name</string>
     <string name="EmailAddress">khafidulmualif@gmail.com</string>
     <string name="YourFavorites">Your Favorites Haircuts</string>
+    <string name="News">News</string>
+    <string name="PasswordHashed">*************</string>
+    <string name="HeadFashion">Head Fashion</string>
+    <string name="Headlines">Headlines</string>
+    <string name="NewsDesc">NewsDesc</string>
+    <string name="EditProfiles">Edit Profiles</string>
+    <string name="NewPassword">New Password</string>
+    <string name="ConfirmPassword">Confirm Password</string>
+    <string name="save">Save</string>
 </resources>
