@@ -13,7 +13,9 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/fragment_barber_maps.xml" value="0.75" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />

@@ -10,6 +10,8 @@ import com.plugin.bigproject.R
 import com.plugin.bigproject.activities.DetailPartnerActivity
 import com.plugin.bigproject.contracts.FragmentHomeContract
 import com.plugin.bigproject.databinding.FragmentHomeBinding
+import com.plugin.bigproject.models.HairCuts
+import com.plugin.bigproject.models.Partners
 import com.plugin.bigproject.presenters.FragmentHomePresenter
 
 
@@ -30,11 +32,11 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
         }
     }
 
-    override fun attachTrendToRecycler() {
+    override fun attachTrendToRecycler(listTrend: List<HairCuts>) {
 
     }
 
-    override fun attachMitraToRecycler() {
+    override fun attachMitraToRecycler(listMitra: List<Partners>) {
 
     }
 

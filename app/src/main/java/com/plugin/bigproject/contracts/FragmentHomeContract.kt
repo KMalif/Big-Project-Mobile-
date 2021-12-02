@@ -1,9 +1,12 @@
 package com.plugin.bigproject.contracts
 
+import com.plugin.bigproject.models.HairCuts
+import com.plugin.bigproject.models.Partners
+
 interface FragmentHomeContract {
     interface FragmentHomeView{
-        fun attachTrendToRecycler()
-        fun attachMitraToRecycler()
+        fun attachTrendToRecycler(listTrend : List<HairCuts>)
+        fun attachMitraToRecycler(listMitra : List<Partners>)
         fun showLoading()
         fun hideLoading()
     }
