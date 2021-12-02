@@ -20,6 +20,13 @@ class CameraActivity : AppCompatActivity() {
         supportActionBar?.hide()
         btnCamera()
         btnGalery()
+        btnBack()
+    }
+
+    private fun btnBack(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun btnGalery(){

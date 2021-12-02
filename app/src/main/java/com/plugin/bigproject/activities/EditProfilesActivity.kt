@@ -11,5 +11,11 @@ class EditProfilesActivity : AppCompatActivity() {
         binding = ActivityEditProfilesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        iconBackClicked()
+    }
+    private fun iconBackClicked(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

@@ -11,5 +11,11 @@ class DetailTrendingActivity : AppCompatActivity() {
         binding = ActivityDetailTrendingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        iconBackClicked()
+    }
+    private fun iconBackClicked(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

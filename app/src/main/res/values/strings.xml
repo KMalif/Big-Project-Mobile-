@@ -39,4 +39,8 @@
     <string name="NewPassword">New Password</string>
     <string name="ConfirmPassword">Confirm Password</string>
     <string name="save">Save</string>
+    <string name="location">Location</string>
+    <string name="Crew">Crew</string>
+    <string name="address">Address</string>
+    <string name="crewCount">10</string>
 </resources>
