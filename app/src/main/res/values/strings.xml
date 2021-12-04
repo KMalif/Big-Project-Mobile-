@@ -43,4 +43,5 @@
     <string name="Crew">Crew</string>
     <string name="address">Address</string>
     <string name="crewCount">10</string>
+    <string name="upload">Upload</string>
 </resources>

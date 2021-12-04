@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CameraActivity">
+    android:scrollbars="none"
+    tools:context=".activities.DetailNewsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardImg"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="320dp"
             android:layout_margin="16dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/ic_baseline_image_24"/>
+                    android:src="@drawable/haircut"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnBack"
@@ -48,47 +49,42 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"/>
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-
-        <Button
-            android:id="@+id/BtnChooseImage"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/custom_card"
-            android:text="@string/Gallery"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@id/BtnCamera"
+        <TextView
+            android:id="@+id/TitleDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardImg" />
-
-        <Button
-            android:id="@+id/BtnCamera"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardImg"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:background="@drawable/custom_card"
-            android:text="@string/Camera"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/BtnChooseImage"
-            app:layout_constraintTop_toBottomOf="@id/cardImg" />
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"
+            android:text="@string/haircutName" />
 
-        <Button
-            android:id="@+id/BtnUpload"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/ContentDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/upload"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:justificationMode="inter_word"
+            android:text="@string/Placeholder"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtnCamera"
-            android:textAllCaps="false"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@id/TitleDetail" />
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

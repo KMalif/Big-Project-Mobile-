@@ -58,12 +58,32 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/etUsername"
+                    android:id="@+id/etName"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:autofillHints="username"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/Name"
+                    android:inputType="text"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvLetLogin" />
+
+                <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:autofillHints="username"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/custom_input"
                     android:drawableStart="@drawable/ic_user"
@@ -75,7 +95,7 @@
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvLetLogin" />
+                    app:layout_constraintTop_toBottomOf="@id/etName" />
 
                 <EditText
                     android:id="@+id/etEmail"
@@ -118,9 +138,10 @@
                     app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
                 <ProgressBar
-                    android:id="@+id/loadingLogin"
+                    android:id="@+id/loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

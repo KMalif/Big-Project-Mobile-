@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
+import com.plugin.bigproject.contracts.CameraActivityContract
 import com.plugin.bigproject.databinding.ActivityCameraBinding
 
 class CameraActivity : AppCompatActivity() {
@@ -95,5 +96,15 @@ class CameraActivity : AppCompatActivity() {
             binding.ImageDetail.setImageBitmap(bmp)
         }
     }
+
+//    private fun upload(){
+//        binding.BtnUpload.setOnClickListener {
+//
+//        }
+//    }
+
+//    override fun showToast(message: String) {
+//        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+//    }
 }
 

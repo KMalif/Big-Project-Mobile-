@@ -3,6 +3,8 @@ package com.plugin.bigproject.webservices
 import com.plugin.bigproject.models.*
 import com.plugin.bigproject.responses.WrappedListResponse
 import com.plugin.bigproject.responses.WrappedResponse
+import com.plugin.bigproject.responses.WrapperRecomendationResponse
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -70,6 +72,13 @@ interface APIServices {
 
     ):Call<WrappedListResponse<News>>
 
+
+    @Multipart
+    @POST("predict")
+    fun predict(
+        @Part image : MultipartBody.Part,
+        @Part("hair") hair : String
+    ):Call<WrapperRecomendationResponse<Recomendation>>
 
 
 

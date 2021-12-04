@@ -3,9 +3,10 @@ package com.plugin.bigproject.responses
 import com.google.gson.annotations.SerializedName
 
 data class WrappedResponse<T>(
+    @SerializedName("data") var data : T,
     @SerializedName("msg") var message : String,
-    @SerializedName("status") var status : Int,
-    @SerializedName("data") var data : T
+    @SerializedName("status") var status : Int
+
 )
 
 data class WrappedListResponse<T>(
