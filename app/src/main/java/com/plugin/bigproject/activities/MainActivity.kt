@@ -13,6 +13,7 @@ import com.plugin.bigproject.fragments.BarberMapsFragment
 import com.plugin.bigproject.fragments.HomeFragment
 import com.plugin.bigproject.fragments.NewsFragment
 import com.plugin.bigproject.fragments.ProfileFragment
+import com.plugin.bigproject.util.Constants
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         askPermissions()
         fab()
         setCurrentFragment(HomeFragment())
+
     }
+
 
     private fun askPermissions(){
         askPermission(

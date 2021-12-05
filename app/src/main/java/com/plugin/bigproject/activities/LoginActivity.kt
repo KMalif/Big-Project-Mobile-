@@ -3,18 +3,38 @@ package com.plugin.bigproject.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.plugin.bigproject.R
+import android.view.View
+import android.widget.Toast
+import com.plugin.bigproject.contracts.LoginActivityContract
 import com.plugin.bigproject.databinding.ActivityLoginBinding
+import com.plugin.bigproject.presenters.ActivityLoginPresenter
+import com.plugin.bigproject.util.Constants
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginActivityContract.LoginActivityView {
+    private lateinit var presenter : LoginActivityContract.LoginActivityPresenter
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        presenter = ActivityLoginPresenter(this)
         createAccount()
         login()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        isLogin()
+    }
+
+    private fun isLogin(){
+        val name = Constants.getName(this)
+
+        println("Name "+Constants.getName(this))
+        if (name != "JhonDoe"){
+            startActivity(Intent(this, MainActivity::class.java).also { finish() })
+        }
     }
     private fun createAccount(){
         binding.tvCreateAccount.setOnClickListener {
@@ -22,6 +42,38 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private fun login(){
-        binding.btnLogin.setOnClickListener { startActivity(Intent(this, MainActivity::class.java).also { finish() }) }
+        binding.btnLogin.setOnClickListener {
+            val userName = binding.etUsername.text.toString()
+            val password = binding.etPassword.text.toString()
+            presenter.login(userName, password,this)
+        }
+    }
+
+    override fun showToast(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun successLogin() {
+        startActivity(Intent(this, MainActivity::class.java).also { finish() })
+    }
+
+    override fun showLoading() {
+        binding.loadingLogin.apply {
+            isIndeterminate = true
+            visibility = View.VISIBLE
+        }
+    }
+
+    override fun hideLoading() {
+        binding.loadingLogin.apply {
+            isIndeterminate = false
+            progress = 0
+            visibility = View.GONE
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.destroy()
     }
 }

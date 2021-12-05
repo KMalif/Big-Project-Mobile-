@@ -6,7 +6,7 @@ import com.plugin.bigproject.models.User
 interface LoginActivityContract {
     interface LoginActivityView {
         fun showToast(message : String)
-        fun successLogin(user : User)
+        fun successLogin()
         fun showLoading()
         fun hideLoading()
     }

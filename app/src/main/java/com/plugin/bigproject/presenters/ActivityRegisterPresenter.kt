@@ -29,9 +29,10 @@ class ActivityRegisterPresenter (v : RegisterActivityContract.RegisterActivityVi
                         view?.hideLoading()
                         println("Success Register" + body)
                     }else{
-                        view?.showToast("Email or Username already exist")
-                    }
-
+                        view?.showToast("Data is empty")
+                        view?.hideLoading() }
+                    }else{
+                    view?.showToast("Email or Username already exist")
                 }
                 view?.hideLoading()
             }

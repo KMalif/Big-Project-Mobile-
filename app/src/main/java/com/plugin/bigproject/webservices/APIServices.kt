@@ -14,7 +14,7 @@ interface APIServices {
     @FormUrlEncoded
     @POST("signin")
     fun login (
-        @Field("email") email : String,
+        @Field("username") username : String,
         @Field("password") password : String
     ):Call<WrappedResponse<User>>
 

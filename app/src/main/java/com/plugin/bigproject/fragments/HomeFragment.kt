@@ -13,6 +13,7 @@ import com.plugin.bigproject.databinding.FragmentHomeBinding
 import com.plugin.bigproject.models.HairCuts
 import com.plugin.bigproject.models.Partners
 import com.plugin.bigproject.presenters.FragmentHomePresenter
+import com.plugin.bigproject.util.Constants
 
 
 class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
@@ -23,7 +24,13 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         detailPartner()
+        setName()
         return binding.root
+    }
+
+    private fun setName(){
+        val name = Constants.getName(requireActivity())
+        binding.TvName.text = name
     }
 
     private fun detailPartner(){
