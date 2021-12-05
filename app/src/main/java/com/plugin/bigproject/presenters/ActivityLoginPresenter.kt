@@ -32,6 +32,7 @@ class ActivityLoginPresenter(v : LoginActivityContract.LoginActivityView?) : Log
                         println("Data ${body.data}")
 //                        Constants.setToken(context,body.data.tokenAccess!!)
                         Constants.setName(context, body.data.name!!)
+                        Constants.setId(context, body.data.id!!)
                     }else{
                         view?.showToast("Data is Empty")
                         view?.hideLoading() }

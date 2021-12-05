@@ -18,4 +18,5 @@ class EditProfilesActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }

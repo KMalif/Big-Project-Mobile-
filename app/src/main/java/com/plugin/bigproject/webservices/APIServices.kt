@@ -28,6 +28,11 @@ interface APIServices {
         @Field("password") password : String
     ):Call<WrappedResponse<User>>
 
+    @GET("user/{id}")
+    fun getUserById(
+        @Path("id") id : Int
+    ): Call<WrappedResponse<User>>
+
     //Edit profile
     @FormUrlEncoded
     @PUT("edit-profile/{id}")

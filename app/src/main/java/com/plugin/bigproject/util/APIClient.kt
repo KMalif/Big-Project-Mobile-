@@ -69,5 +69,25 @@ class Constants{
             val pref = context.getSharedPreferences("NAME", MODE_PRIVATE)
             pref.edit().clear().apply()
         }
+
+        fun getId(context: Context): Int {
+            val pref = context.getSharedPreferences("ID", MODE_PRIVATE)
+            val id = pref?.getInt("ID", 0)
+            return id!!
+        }
+
+        fun setId(context: Context, id: Int) {
+            val pref = context.getSharedPreferences("ID", MODE_PRIVATE)
+            pref.edit().apply {
+                putInt("ID", id)
+                apply()
+            }
+        }
+
+        fun clearId(context: Context) {
+            val pref = context.getSharedPreferences("ID", MODE_PRIVATE)
+            pref.edit().clear().apply()
+        }
+
     }
 }
