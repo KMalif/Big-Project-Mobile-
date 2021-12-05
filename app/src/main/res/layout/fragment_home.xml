@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@id/Imgavatar" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RvCategory"
+            android:id="@+id/RvHaircuts"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="16dp"
@@ -95,10 +95,10 @@
             android:textSize="@dimen/name"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/RvCategory"/>
+            app:layout_constraintTop_toBottomOf="@id/RvHaircuts"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RvNearest"
+            android:id="@+id/RvPartners"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:layout_marginTop="16dp"

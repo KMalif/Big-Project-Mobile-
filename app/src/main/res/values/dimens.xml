@@ -2,4 +2,5 @@
 <resources>
     <dimen name="name">18sp</dimen>
     <dimen name="heading1">20sp</dimen>
+    <dimen name="Appname">30sp</dimen>
 </resources>

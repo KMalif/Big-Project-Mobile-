@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Big Project</string>
+    <string name="app_name">Haircutz</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Home">Home</string>
@@ -19,7 +19,7 @@
     <string name="Email">Email</string>
     <string name="haircutName">Top Fade</string>
     <string name="barberName">Scisorism</string>
-    <string name="barberAddress">Tegal, Central Java</string>
+    <string name="barberAddress">Tegal</string>
     <string name="Maps">Maps</string>
     <string name="Placeholder">Placeholder</string>
     <string name="ChooseImg">Choose Image</string>
@@ -44,4 +44,5 @@
     <string name="address">Address</string>
     <string name="crewCount">10</string>
     <string name="upload">Upload</string>
+    <string name="logout">Logout</string>
 </resources>

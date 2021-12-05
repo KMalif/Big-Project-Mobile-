@@ -10,9 +10,10 @@ data class WrappedResponse<T>(
 )
 
 data class WrappedListResponse<T>(
+    @SerializedName("data") var data : List<T>,
     @SerializedName("msg") var message : String,
-    @SerializedName("status") var status : Int,
-    @SerializedName("data") var data : List<T>
+    @SerializedName("status") var status : Int
+
 )
 
 data class WrapperRecomendationResponse<T>(

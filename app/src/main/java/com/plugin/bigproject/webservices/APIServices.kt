@@ -55,10 +55,16 @@ interface APIServices {
     ): Call<WrappedListResponse<HairCuts>>
 
     //get Partners
-    @GET("partners")
+    @GET("mitra")
     fun getPartners(
 
     ): Call<WrappedListResponse<Partners>>
+
+    //get Partners
+    @GET("mitra/{id}")
+    fun getPartnerbyId(
+        @Path("id") id: Int
+    ): Call<WrappedResponse<Partners>>
 
     //get barberman
     @GET("barberman/{id}")

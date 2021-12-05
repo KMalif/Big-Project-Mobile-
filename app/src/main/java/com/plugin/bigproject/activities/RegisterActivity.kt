@@ -28,7 +28,12 @@ class RegisterActivity : AppCompatActivity(), RegisterActivityContract.RegisterA
             val userName = binding.etUsername.text.toString()
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            presenter.register(name, userName, email, password)
+            if(name.isNotEmpty() && userName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
+                presenter.register(name, userName, email, password)
+            }else{
+                showToast("Please input all form")
+            }
+
         }
 
     }

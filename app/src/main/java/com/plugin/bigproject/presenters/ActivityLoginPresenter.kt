@@ -36,13 +36,13 @@ class ActivityLoginPresenter(v : LoginActivityContract.LoginActivityView?) : Log
                         view?.showToast("Data is Empty")
                         view?.hideLoading() }
                 }else{
-                    view?.showToast("Username and password doesn't match")
+                    view?.showToast("Cant connect to server")
                 }
                 view?.hideLoading()
             }
 
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
-                view?.showToast("Can't connect to server")
+                view?.showToast("Username and password doesn't match")
                 print(t.message)
                 view?.hideLoading()
             }

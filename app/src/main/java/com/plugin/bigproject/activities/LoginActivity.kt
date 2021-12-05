@@ -45,7 +45,12 @@ class LoginActivity : AppCompatActivity(), LoginActivityContract.LoginActivityVi
         binding.btnLogin.setOnClickListener {
             val userName = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
-            presenter.login(userName, password,this)
+            if (userName.isNotEmpty() && password.isNotEmpty()){
+                presenter.login(userName, password,this)
+            }else{
+                showToast("Please input all form")
+            }
+
         }
     }
 
