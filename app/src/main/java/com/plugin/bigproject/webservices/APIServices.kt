@@ -78,10 +78,16 @@ interface APIServices {
     ): Call<WrappedListResponse<BarberMan>>
 
     //get news
-    @GET("news")
+    @GET("berita")
     fun getNews(
 
     ):Call<WrappedListResponse<News>>
+
+    //GEt newsbyID
+    @GET("berita")
+    fun getNewsByID(
+        @Path("id") id : Int
+    ):Call<WrappedResponse<News>>
 
 
     @Multipart
