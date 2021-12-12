@@ -13,13 +13,16 @@
         <entry key="app/src/main/res/layout/activity_edit_profiles.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_result.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/fragment_barber_maps.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/fragment_barber_maps.xml" value="0.3958333333333333" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_map_coba.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19791666666666666" />

@@ -45,4 +45,13 @@
     <string name="crewCount">10</string>
     <string name="upload">Upload</string>
     <string name="logout">Logout</string>
+    <string name="Message">Message</string>
+    <string name="Chat">Chat</string>
+    <string name="Longorshort">Long or Short</string>
+    <string name="YourHair">Your hair</string>
+    <string-array name="hair">
+        <item>Panjang</item>
+        <item>Pendek</item>
+    </string-array>
+    <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzdGZqOTBjZXMyb3AwdWx2MHhtYmgifQ.Zf63dfUrmV3iB9s2-FOing</string>
 </resources>

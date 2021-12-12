@@ -8,11 +8,17 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.plugin.bigproject.R
 import com.plugin.bigproject.contracts.CameraActivityContract
 import com.plugin.bigproject.databinding.ActivityCameraBinding
 
 class CameraActivity : AppCompatActivity() {
+    companion object {
+        private val IMAGE_PICKCODE = 1000
+        private val PERMISSION_CODE = 1001
+    }
     private lateinit var binding: ActivityCameraBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +28,19 @@ class CameraActivity : AppCompatActivity() {
         btnCamera()
         btnGalery()
         btnBack()
+        upload()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUpDropdown()
+    }
+
+    private fun setUpDropdown(){
+        val hairs = resources.getStringArray(R.array.hair)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, hairs)
+        binding.EtHair.setAdapter(arrayAdapter)
+
     }
 
     private fun btnBack(){
@@ -61,10 +80,7 @@ class CameraActivity : AppCompatActivity() {
         startActivityForResult(intent, IMAGE_PICKCODE)
     }
 
-    companion object {
-        private val IMAGE_PICKCODE = 1000
-        private val PERMISSION_CODE = 1001
-    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -97,11 +113,12 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-//    private fun upload(){
-//        binding.BtnUpload.setOnClickListener {
-//
-//        }
-//    }
+    private fun upload(){
+        binding.BtnUpload.setOnClickListener {
+            val hair = binding.EtHair.text.toString()
+            println("Rambutmu $hair")
+        }
+    }
 
 //    override fun showToast(message: String) {
 //        Toast.makeText(this, message, Toast.LENGTH_LONG).show()

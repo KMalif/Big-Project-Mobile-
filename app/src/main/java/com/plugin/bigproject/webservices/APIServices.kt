@@ -84,7 +84,7 @@ interface APIServices {
     ):Call<WrappedListResponse<News>>
 
     //GEt newsbyID
-    @GET("berita")
+    @GET("berita/{id}")
     fun getNewsByID(
         @Path("id") id : Int
     ):Call<WrappedResponse<News>>

@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 }
 
@@ -62,12 +61,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //maps
-    implementation 'com.google.android.gms:play-services-maps:18.0.0'
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.mapbox.maps:android:10.1.0'
+
+    //permision
     implementation 'com.github.florent37:runtime-permission-kotlin:1.1.2'
-
-
-
 
 
 }

@@ -47,4 +47,5 @@
         android:contentDescription="@string/open_camera"
         app:fabSize="mini"/>
 
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
