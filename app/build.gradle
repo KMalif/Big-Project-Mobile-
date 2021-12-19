@@ -61,7 +61,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //maps
-    implementation 'com.mapbox.maps:android:10.1.0'
+//    implementation 'com.mapbox.maps:android:10.1.0'
+    //imagePicker
+    implementation 'com.github.esafirm:android-image-picker:3.0.0-beta1'
+
 
     //permision
     implementation 'com.github.florent37:runtime-permission-kotlin:1.1.2'

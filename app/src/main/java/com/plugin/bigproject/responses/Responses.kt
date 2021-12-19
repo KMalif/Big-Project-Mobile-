@@ -17,8 +17,8 @@ data class WrappedListResponse<T>(
 )
 
 data class WrapperRecomendationResponse<T>(
-    @SerializedName("msg") var message : String,
-    @SerializedName("status") var status : Int,
     @SerializedName("Bentuk wajah") var shape : String,
-    @SerializedName("Rekomendasi") var recomendation : List<T>
+    @SerializedName("data") var data : List<T>,
+    @SerializedName("msg") var message : String,
+    @SerializedName("status") var status : Int
 )

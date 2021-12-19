@@ -5,6 +5,7 @@ import com.plugin.bigproject.responses.WrappedListResponse
 import com.plugin.bigproject.responses.WrappedResponse
 import com.plugin.bigproject.responses.WrapperRecomendationResponse
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -12,7 +13,7 @@ interface APIServices {
 
     //Sign in
     @FormUrlEncoded
-    @POST("signin")
+    @POST("signin/")
     fun login (
         @Field("username") username : String,
         @Field("password") password : String
@@ -20,7 +21,7 @@ interface APIServices {
 
     //Sign up
     @FormUrlEncoded
-    @POST("signup")
+    @POST("signup/")
     fun register (
         @Field("name") name : String,
         @Field("username") username : String,
@@ -60,7 +61,7 @@ interface APIServices {
     ): Call<WrappedListResponse<HairCuts>>
 
     //get Partners
-    @GET("mitra")
+    @GET("mitra/")
     fun getPartners(
 
     ): Call<WrappedListResponse<Partners>>
@@ -78,7 +79,7 @@ interface APIServices {
     ): Call<WrappedListResponse<BarberMan>>
 
     //get news
-    @GET("berita")
+    @GET("berita/")
     fun getNews(
 
     ):Call<WrappedListResponse<News>>
@@ -91,10 +92,10 @@ interface APIServices {
 
 
     @Multipart
-    @POST("predict")
+    @POST("predict/")
     fun predict(
-        @Part image : MultipartBody.Part,
-        @Part("hair") hair : String
+        @Part files : MultipartBody.Part,
+        @Part("panjang") panjang : RequestBody
     ):Call<WrapperRecomendationResponse<Recomendation>>
 
 

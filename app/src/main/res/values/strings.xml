@@ -50,8 +50,8 @@
     <string name="Longorshort">Long or Short</string>
     <string name="YourHair">Your hair</string>
     <string-array name="hair">
-        <item>Panjang</item>
-        <item>Pendek</item>
+        <item>panjang</item>
+        <item>pendek</item>
     </string-array>
     <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzdGZqOTBjZXMyb3AwdWx2MHhtYmgifQ.Zf63dfUrmV3iB9s2-FOing</string>
 </resources>

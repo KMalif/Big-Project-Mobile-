@@ -1,6 +1,7 @@
 package com.plugin.bigproject.contracts
 
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 
 interface CameraActivityContract {
@@ -9,7 +10,7 @@ interface CameraActivityContract {
     }
 
     interface Presenter{
-        fun prediction(image : MultipartBody.Part, hair : String)
+        fun prediction(image : MultipartBody.Part, hair : RequestBody)
         fun destroy()
     }
 }
