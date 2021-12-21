@@ -29,7 +29,6 @@
                     android:id="@+id/ImageDetail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -55,14 +54,15 @@
 
         <Button
             android:id="@+id/BtnChooseImage"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/custom_card"
-            android:text="@string/Gallery"
+            android:text="@string/ChooseImage"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toStartOf="@id/BtnCamera"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardImg" />
 
@@ -71,6 +71,7 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:visibility="gone"
             android:layout_marginTop="32dp"
             android:background="@drawable/custom_card"
             android:text="@string/Camera"
@@ -90,7 +91,7 @@
             android:hint="@string/YourHair"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtnCamera">
+            app:layout_constraintTop_toBottomOf="@id/BtnChooseImage">
 
 
             <AutoCompleteTextView
@@ -106,14 +107,12 @@
 
         <ProgressBar
             android:id="@+id/loadingUpload"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:max="100"
-            android:progress="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/InputLayout" />
@@ -128,11 +127,59 @@
             android:layout_marginBottom="16dp"
             android:text="@string/upload"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/loadingUpload" />
 
+        <TextView
+            android:id="@+id/TvShape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="@string/Shape"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading2"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/BtnUpload" />
+
+        <TextView
+            android:id="@+id/TitleRecomendation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TvShape"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"
+            android:text="@string/Recomendations" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RVRecomendation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TitleRecomendation"
+            tools:listitem="@layout/list_recomendation"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

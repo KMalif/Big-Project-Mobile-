@@ -1,5 +1,6 @@
 package com.plugin.bigproject.contracts
 
+import com.plugin.bigproject.models.Recomendation
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -7,6 +8,9 @@ import okhttp3.RequestBody
 interface CameraActivityContract {
     interface View{
         fun showToast(message : String)
+        fun showLoading()
+        fun hideLoading()
+        fun getRecomendation(recomendations : List<Recomendation>, faceShape : String)
     }
 
     interface Presenter{

@@ -54,4 +54,7 @@
         <item>pendek</item>
     </string-array>
     <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzdGZqOTBjZXMyb3AwdWx2MHhtYmgifQ.Zf63dfUrmV3iB9s2-FOing</string>
+    <string name="ChooseImage">Choose Image</string>
+    <string name="Shape">Square</string>
+    <string name="Recomendations">Recomendations</string>
 </resources>

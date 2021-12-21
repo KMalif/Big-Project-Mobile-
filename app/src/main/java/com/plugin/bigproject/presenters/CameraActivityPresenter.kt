@@ -16,6 +16,7 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
     private var apiService = APIClient.APIService()
     override fun prediction(image: MultipartBody.Part, hair: RequestBody) {
         val request = apiService.predict(image, hair)
+        view?.showLoading()
         request.enqueue(object : Callback<WrapperRecomendationResponse<Recomendation>>{
             override fun onResponse(
                 call: Call<WrapperRecomendationResponse<Recomendation>>,
@@ -25,24 +26,24 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
                     val body = response.body()
                     if (body != null){
                         view?.showToast("Succes Upload")
-                        println("Wajahmu ${body.shape}")
+                        view?.getRecomendation(body.data, body.shape)
+                        view?.hideLoading()
                     }
                     else{
                         view?.showToast("Data not Found")
+                        view?.hideLoading()
                     }
                 }else{
-                    view?.showToast("gagal cok")
-                    println("RESPONSE " + response.body()?.message)
+                    println("RESPONSE " + response.errorBody())
                     println("RESPONSE " + response)
+                    view?.hideLoading()
                 }
+                view?.hideLoading()
             }
 
-            override fun onFailure(
-                call: Call<WrapperRecomendationResponse<Recomendation>>,
-                t: Throwable
-            ) {
+            override fun onFailure(call: Call<WrapperRecomendationResponse<Recomendation>>, t: Throwable) {
                 println(t.message)
-                view?.showToast("Gak boleh dibuka")
+                view?.hideLoading()
             }
         })
     }

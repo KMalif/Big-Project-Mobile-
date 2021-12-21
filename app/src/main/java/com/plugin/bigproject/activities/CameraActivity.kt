@@ -1,42 +1,34 @@
 package com.plugin.bigproject.activities
 
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.media.Image
-import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerMode
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.plugin.bigproject.R
+import com.plugin.bigproject.adapters.RecomendationAdapter
 import com.plugin.bigproject.contracts.CameraActivityContract
 import com.plugin.bigproject.databinding.ActivityCameraBinding
+import com.plugin.bigproject.models.Recomendation
 import com.plugin.bigproject.presenters.CameraActivityPresenter
-import com.plugin.bigproject.util.UploadRequestBody
-import com.plugin.bigproject.util.getFileName
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
-    companion object {
-        private val IMAGE_PICKCODE = 100
-        private val PERMISSION_CODE = 1001
-    }
 
     private var presenter : CameraActivityContract.Presenter? = null
-    private var galleryImage : Uri ? = null
     private var choosedImage : com.esafirm.imagepicker.model.Image? = null
     private var image : MultipartBody.Part? = null
 
+    private lateinit var recomendationAdapter: RecomendationAdapter
     private lateinit var binding: ActivityCameraBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +36,17 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         setContentView(binding.root)
         supportActionBar?.hide()
         presenter = CameraActivityPresenter(this)
-//        btnCamera()
-        btnGalery()
         btnBack()
+
+        binding.BtnChooseImage.setOnClickListener {
+          chooseImage()
+        }
 
         binding.BtnUpload.setOnClickListener {
             uploadImage()
         }
     }
+
     override fun onResume() {
         super.onResume()
         setUpDropdown()
@@ -80,7 +75,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
             isIncludeVideo = false
             isShowCamera = false
         }
-
         imagePickerLauncher.launch(config)
     }
 
@@ -92,117 +86,67 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
     private fun uploadImage(){
         if(choosedImage != null){
-            var originalFile = File(choosedImage?.path!!)
+            val originalFile = File(choosedImage?.path!!)
 
-            var imagePart : RequestBody = RequestBody.create(
-                "image/*".toMediaTypeOrNull(),
-                originalFile
-            )
+            val imagePart : RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), originalFile)
 
-            image = MultipartBody.Part.createFormData(
-                "foto",
-                originalFile.name,
-                imagePart
-            )
+            image = MultipartBody.Part.createFormData("files", originalFile.name, imagePart)
+
         }
-
         val hair = RequestBody.create(MultipartBody.FORM, binding.EtHair.text.toString())
-
         presenter?.prediction(image!!, hair)
-
     }
-
-    private fun btnGalery(){
-        binding.BtnChooseImage.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
-                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                    requestPermissions(permissions,PERMISSION_CODE)
-                }
-                else{ chooseImage() }
-
-            } else{ chooseImage() }
-        }
-    }
-//    private fun btnCamera(){
-//        binding.BtnCamera.setOnClickListener {
-//            val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//            startActivityForResult(i, 123)
-//        }
-//    }
-
-//    private fun pickImageFromGallery(){
-//        Intent(Intent.ACTION_PICK).also{
-//            it.type = "image/*"
-//            val mimeTypes = arrayOf("image/jpeg", "image/jpg", "image/png")
-//            it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-//            startActivityForResult(it, IMAGE_PICKCODE)
-//        }
-//    }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICKCODE){
-//            galleryImage = data?.data
-//            binding.ImageDetail.setImageURI(galleryImage)
-//            println("Image = $galleryImage")
-//        }
-//
-//    }
-
-
-
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-           grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode){
-            PERMISSION_CODE -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    chooseImage()
-                }
-                else{
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-
-//    private fun upload(){
-//        binding.BtnUpload.setOnClickListener {
-//            if (galleryImage == null){
-//                showToast("Select an Image first")
-//                return@setOnClickListener
-//            }
-//
-//            val parcelDescriptor = contentResolver.openFileDescriptor(galleryImage!!, "r", null) ?: return@setOnClickListener
-//            val file = File(cacheDir, contentResolver.getFileName(galleryImage!!))
-//            val inputStream = FileInputStream(parcelDescriptor?.fileDescriptor)
-//            val outputStream = FileOutputStream(file)
-//            inputStream.copyTo(outputStream)
-//            binding.loadingUpload.progress = 0
-//            val body = UploadRequestBody(file, "image", this)
-//            val image =  MultipartBody.Part.createFormData("image", file.name, body)
-//            val hair = RequestBody.create(MultipartBody.FORM, binding.EtHair.text.toString())
-//            val panjang = binding.EtHair.text.toString()
-//            println("Panjang Rambutmu $panjang")
-//            presenter?.prediction(image, hair)
-//
-//
-//        }
-//    }
 
     override fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-//    override fun onProgressUpdate(percentage: Int) {
-//        binding.loadingUpload.progress = percentage
-//    }
+    override fun showLoading() {
+        binding.loadingUpload.apply {
+            isIndeterminate = true
+            visibility = View.VISIBLE
+        }
+    }
+
+    override fun hideLoading() {
+        binding.loadingUpload.apply {
+            isIndeterminate = false
+            progress = 0
+            visibility = View.GONE
+        }
+    }
+
+    override fun getRecomendation(recomendations: List<Recomendation>, faceShape : String) {
+        println("Shape $faceShape Recomendations $recomendations ")
+        hideInput()
+        showRecomendation()
+        binding.RVRecomendation.apply {
+            recomendationAdapter = RecomendationAdapter(recomendations)
+            val mlayoutManager = GridLayoutManager(this@CameraActivity, 2)
+            mlayoutManager.orientation = LinearLayoutManager.VERTICAL
+            layoutManager = mlayoutManager
+            adapter = recomendationAdapter
+        }
+        binding.TvShape.text = faceShape
+    }
+
+    private fun showRecomendation(){
+        binding.apply {
+            TvShape.visibility = View.VISIBLE
+            TitleRecomendation.visibility = View.VISIBLE
+            RVRecomendation.visibility = View.VISIBLE
+        }
+    }
+
+
+    private fun hideInput(){
+        binding.apply {
+            BtnChooseImage.visibility = View.GONE
+            EtHair.visibility = View.GONE
+            InputLayout.visibility = View.GONE
+            BtnUpload.visibility = View.GONE
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
