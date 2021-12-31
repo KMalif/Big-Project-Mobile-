@@ -14,6 +14,11 @@
         />
 
     <item
+        android:id="@+id/icBlank"
+        android:title="@string/Blank"
+        />
+
+    <item
         android:id="@+id/icMaps"
         android:title="@string/Maps"
         android:icon="@drawable/ic_maps"/>

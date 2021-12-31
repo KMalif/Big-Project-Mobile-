@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         askPermissions()
         fab()
         setCurrentFragment(HomeFragment())
-
     }
 
 
@@ -48,7 +47,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     .show()
             }
-
             if (e.hasForeverDenied()){
                 e.foreverDenied.forEach {
                 }
@@ -58,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bottomNavigatio(){
-        binding.BottomNavigation.setOnNavigationItemSelectedListener {
+        binding.BottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.icHome -> setCurrentFragment(HomeFragment())
                 R.id.icMaps -> setCurrentFragment(BarberMapsFragment())

@@ -14,3 +14,5 @@ fun ContentResolver.getFileName(uri : Uri) : String{
     }
     return name
 }
+
+//sk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreHNydDQ3eDE2M3YydW12bm45MnBvcTIifQ.kzkK34IprgBKOrk8_LnvZg

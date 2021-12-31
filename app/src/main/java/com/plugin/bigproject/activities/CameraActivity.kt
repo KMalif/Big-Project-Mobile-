@@ -1,6 +1,5 @@
 package com.plugin.bigproject.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,6 +19,8 @@ import com.plugin.bigproject.presenters.CameraActivityPresenter
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
@@ -36,15 +37,10 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         setContentView(binding.root)
         supportActionBar?.hide()
         presenter = CameraActivityPresenter(this)
-        btnBack()
+        btnBackListener()
+        btnChooseListener()
+        btnUploadListener()
 
-        binding.BtnChooseImage.setOnClickListener {
-          chooseImage()
-        }
-
-        binding.BtnUpload.setOnClickListener {
-            uploadImage()
-        }
     }
 
     override fun onResume() {
@@ -58,7 +54,19 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         binding.EtHair.setAdapter(arrayAdapter)
     }
 
-    private fun btnBack(){
+    private fun btnUploadListener(){
+        binding.BtnUpload.setOnClickListener {
+            uploadImage()
+        }
+    }
+
+    private fun btnChooseListener(){
+        binding.BtnChooseImage.setOnClickListener {
+            chooseImage()
+        }
+    }
+
+    private fun btnBackListener(){
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -73,7 +81,7 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         val config = ImagePickerConfig{
             mode = ImagePickerMode.SINGLE
             isIncludeVideo = false
-            isShowCamera = false
+//            isShowCamera = false
         }
         imagePickerLauncher.launch(config)
     }
@@ -88,12 +96,12 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         if(choosedImage != null){
             val originalFile = File(choosedImage?.path!!)
 
-            val imagePart : RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), originalFile)
+            val imagePart : RequestBody = originalFile.asRequestBody("image/*".toMediaTypeOrNull())
 
             image = MultipartBody.Part.createFormData("files", originalFile.name, imagePart)
 
         }
-        val hair = RequestBody.create(MultipartBody.FORM, binding.EtHair.text.toString())
+        val hair = binding.EtHair.text.toString().toRequestBody(MultipartBody.FORM)
         presenter?.prediction(image!!, hair)
     }
 
