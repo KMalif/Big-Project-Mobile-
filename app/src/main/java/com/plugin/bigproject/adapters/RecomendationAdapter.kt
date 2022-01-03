@@ -20,7 +20,7 @@ class RecomendationAdapter(private var recomendations : List<Recomendation>) : R
             Glide.with(holder.itemView)
                 .load(recomendations[position].image)
                 .into(ImgHaircuts)
-            TvHaircuts.text = recomendations[position].shape
+            TvHaircuts.text = recomendations[position].bentuk
         }
     }
 

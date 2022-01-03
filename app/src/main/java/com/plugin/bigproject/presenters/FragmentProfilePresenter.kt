@@ -22,7 +22,7 @@ class FragmentProfilePresenter(v : FragmentProfileContract.View?):FragmentProfil
                     val body = response.body()
                     if (body != null){
                         view?.showProfiletoView(body.data)
-                        view?.showToast("Get Profile user success")
+//                        view?.showToast("Get Profile user success")
                     }else{
                         view?.showToast("User is empty")
                     }

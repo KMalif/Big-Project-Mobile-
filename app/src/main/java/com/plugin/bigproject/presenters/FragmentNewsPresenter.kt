@@ -24,7 +24,7 @@ class FragmentNewsPresenter (v : FragmentNewsContract.View?): FragmentNewsContra
                     if (body != null) {
                         view?.hideLoading()
                         view?.attachNewsToRecycler(body.data)
-                        view?.showToast("Success get News")
+//                        view?.showToast("Success get News")
                     }else{
                         view?.showToast("Data is empty")
                         view?.hideLoading()

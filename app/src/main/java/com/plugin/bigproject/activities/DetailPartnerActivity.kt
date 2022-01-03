@@ -48,7 +48,7 @@ class DetailPartnerActivity : AppCompatActivity(), DetailPartnerActivityContract
     }
 
     override fun showDetailPartner(partner: Partners) {
-        binding.TitleDetail.text = partner.namaMitra
+        binding.TitleDetail.text = partner.nama_mitra
         binding.BarberAddress.text = partner.alamat
         Glide.with(this)
             .load(partner.image)

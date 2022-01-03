@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.plugin.bigproject.activities.DetailProfileActivity
 import com.plugin.bigproject.activities.EditProfilesActivity
 import com.plugin.bigproject.activities.LoginActivity
 import com.plugin.bigproject.contracts.FragmentProfileContract
@@ -29,7 +30,14 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         _binding = FragmentProfileBinding.inflate(inflater,container, false)
         showAlertDialogue()
         presenter = FragmentProfilePresenter(this)
+        detailBtnListener()
         return binding.root
+    }
+
+    private fun detailBtnListener(){
+        binding.BtnDetail.setOnClickListener {
+            startActivity(Intent(activity, DetailProfileActivity::class.java))
+        }
     }
 
     private fun logout(){

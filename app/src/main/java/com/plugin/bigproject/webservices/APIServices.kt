@@ -1,9 +1,7 @@
 package com.plugin.bigproject.webservices
 
 import com.plugin.bigproject.models.*
-import com.plugin.bigproject.responses.WrappedListResponse
-import com.plugin.bigproject.responses.WrappedResponse
-import com.plugin.bigproject.responses.WrapperRecomendationResponse
+import com.plugin.bigproject.responses.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -63,7 +61,7 @@ interface APIServices {
     //get Partners
     @GET("mitra/")
     fun getPartners(
-
+        @Header("Authorization") api_token: String
     ): Call<WrappedListResponse<Partners>>
 
     //get Partners
@@ -98,6 +96,16 @@ interface APIServices {
         @Part("panjang") panjang : RequestBody
     ):Call<WrapperRecomendationResponse<Recomendation>>
 
+    @FormUrlEncoded
+    @POST("chatbot")
+    fun sendChat(
+        @Header("Authorization") api_token: String,
+        @Field("chat") chat : String
+    ):Call<ChatbotResponse>
 
+    @GET("chatbot")
+    fun getPreviousChat(
+        @Header("Authorization") api_token: String
+    ):Call<PreviousChatResponse<Message>>
 
 }

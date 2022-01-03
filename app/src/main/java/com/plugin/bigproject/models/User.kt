@@ -1,16 +1,13 @@
 package com.plugin.bigproject.models
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-
-
 
 data class User(
-    @SerializedName("id") var id : Int? = null,
-    @SerializedName("name") var name : String? = null,
-    @SerializedName("email") var email : String? = null,
-    @SerializedName("role") var role : String? = null,
-    @SerializedName("username") var username : String? = null,
-    @SerializedName("token_access") var tokenAccess : String? = null,
-    @SerializedName("token_refresh") var tokenRefresh : String? = null
+    var id : Int? = null,
+    var name : String? = null,
+    var email : String? = null,
+    var role : String? = null,
+    var username : String? = null,
+    var token : String? = null,
+    var refresh_token : String? = null
 )

@@ -30,7 +30,7 @@ class ActivityLoginPresenter(v : LoginActivityContract.LoginActivityView?) : Log
                         view?.successLogin()
                         view?.hideLoading()
                         println("Data ${body.data}")
-//                        Constants.setToken(context,body.data.tokenAccess!!)
+                        Constants.setToken(context,body.data.token!!)
                         Constants.setName(context, body.data.name!!)
                         Constants.setId(context, body.data.id!!)
                     }else{

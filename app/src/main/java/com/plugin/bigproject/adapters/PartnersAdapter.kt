@@ -20,7 +20,7 @@ class PartnersAdapter(private var listPartner : List<Partners>, private val list
             Glide.with(holder.itemView)
                 .load(listPartner[position].image)
                 .into(ImgBarber)
-            BarberName.text = listPartner[position].namaMitra
+            BarberName.text = listPartner[position].nama_mitra
             Address.text = listPartner[position].alamat
         }
         holder.itemView.setOnClickListener {

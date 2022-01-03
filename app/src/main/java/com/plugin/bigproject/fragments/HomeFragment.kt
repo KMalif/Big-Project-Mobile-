@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.plugin.bigproject.activities.ChatbotActivity
 import com.plugin.bigproject.activities.DetailPartnerActivity
 import com.plugin.bigproject.adapters.PartnersAdapter
 import com.plugin.bigproject.adapters.PartnersListener
@@ -28,10 +29,15 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         detailPartner()
         setName()
+        fabChatbotlistener()
         presenter = FragmentHomePresenter(this)
         return binding.root
     }
 
+
+    private fun fabChatbotlistener(){
+        binding.fabChat.setOnClickListener { startActivity(Intent(activity, ChatbotActivity::class.java)) }
+    }
 
     private fun setName(){
         val name = Constants.getName(requireActivity())
@@ -45,7 +51,8 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
     }
 
     private fun getMitra(){
-        presenter?.getMitra()
+        val token = Constants.getToken(requireActivity())
+        presenter?.getMitra(token)
     }
 
     override fun attachMitraToRecycler(listMitra: List<Partners>) {

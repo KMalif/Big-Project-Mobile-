@@ -58,4 +58,7 @@
     <string name="Recomendations">Recomendations</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzcDNnOTIxb3EybnFvOXQzeDM4dXMifQ.lPt699H_sWCQeyJamXrD5A</string>
     <string name="Blank">" "</string>
+    <string name="chatMessage">This is a sample message that will appear</string>
+    <string name="haircut">Haircuts</string>
+    <string name="Detail">Detail</string>
 </resources>

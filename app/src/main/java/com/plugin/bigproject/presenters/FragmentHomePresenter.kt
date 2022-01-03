@@ -13,8 +13,8 @@ class FragmentHomePresenter(v : FragmentHomeContract.FragmentHomeView?) : Fragme
     private var view : FragmentHomeContract.FragmentHomeView? = v
     private var apiService = APIClient.APIService()
 
-    override fun getMitra() {
-        val request = apiService.getPartners()
+    override fun getMitra(token : String) {
+        val request = apiService.getPartners("Bearer $token" )
         request.enqueue(object : Callback<WrappedListResponse<Partners>>{
             override fun onResponse(
                 call: Call<WrappedListResponse<Partners>>,
@@ -29,6 +29,7 @@ class FragmentHomePresenter(v : FragmentHomeContract.FragmentHomeView?) : Fragme
                     }
                 }else {
                     view?.showToast("Something went wrong")
+                    println(response.errorBody())
                     view?.hideLoading()
                 }
                 view?.hideLoading()

@@ -42,13 +42,14 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
         android:src="@drawable/ic_plus"
         app:layout_anchor="@id/bottomAppBar"
         android:clickable="true"
         android:focusable="true"
+        android:tintMode="add"
+        android:tint="@color/white"
+        android:backgroundTint="@color/black"
         android:contentDescription="@string/open_camera"
         app:fabSize="mini"/>
-    
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,7 +13,7 @@ interface FragmentHomeContract {
 
     interface FragmentHomePresenter{
 //        fun getTrend()
-        fun getMitra()
+        fun getMitra(token: String)
         fun destroy()
     }
 }

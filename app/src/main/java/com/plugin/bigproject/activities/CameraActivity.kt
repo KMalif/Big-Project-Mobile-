@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerMode
+import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.plugin.bigproject.R
 import com.plugin.bigproject.adapters.RecomendationAdapter
@@ -40,6 +41,7 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         btnBackListener()
         btnChooseListener()
         btnUploadListener()
+        cameraLaunch()
 
     }
 
@@ -81,9 +83,13 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         val config = ImagePickerConfig{
             mode = ImagePickerMode.SINGLE
             isIncludeVideo = false
-//            isShowCamera = false
+
         }
         imagePickerLauncher.launch(config)
+    }
+    private fun cameraLaunch(){
+        binding.BtnCamera.setOnClickListener {  imagePickerLauncher.launch(CameraOnlyConfig())}
+
     }
 
     private fun showImage(){
@@ -153,6 +159,7 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
             EtHair.visibility = View.GONE
             InputLayout.visibility = View.GONE
             BtnUpload.visibility = View.GONE
+            BtnCamera.visibility = View.GONE
         }
     }
 

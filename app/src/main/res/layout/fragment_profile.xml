@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/Avatar"
@@ -160,6 +160,17 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/HeadPass" />
+
+            <Button
+                android:id="@+id/BtnDetail"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="@string/Detail"
+                android:textAllCaps="false"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
