@@ -21,7 +21,7 @@ class PartnersAdapter(private var listPartner : List<Partners>, private val list
                 .load(listPartner[position].image)
                 .into(ImgBarber)
             BarberName.text = listPartner[position].nama_mitra
-            Address.text = listPartner[position].alamat
+            Address.text = listPartner[position].alamat_mitra
         }
         holder.itemView.setOnClickListener {
             listener.onParnerClick(listPartner[position])

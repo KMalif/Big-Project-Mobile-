@@ -30,7 +30,7 @@ class APIClient {
 
 class Constants{
     companion object{
-        const val API_ENDPOINT = "https://hair-cutz.herokuapp.com/"
+        const val API_ENDPOINT = "https://hair-cutz-backend.herokuapp.com/"
         fun getToken(context: Context): String {
             val pref = context.getSharedPreferences("TOKEN", MODE_PRIVATE)
             val token = pref?.getString("TOKEN", "UNDEFINED")
@@ -88,6 +88,24 @@ class Constants{
             pref.edit().clear().apply()
         }
 
+        fun getGender(context: Context): String {
+            val pref = context.getSharedPreferences("GENDER", MODE_PRIVATE)
+            val token = pref?.getString("GENDER", "male")
+            return token!!
+        }
+
+        fun setGender(context: Context, gender: String) {
+            val pref = context.getSharedPreferences("GENDER", MODE_PRIVATE)
+            pref.edit().apply {
+                putString("GENDER", gender)
+                apply()
+            }
+        }
+
+        fun clearGender(context: Context) {
+            val pref = context.getSharedPreferences("GENDER", MODE_PRIVATE)
+            pref.edit().clear().apply()
+        }
 
     }
 }

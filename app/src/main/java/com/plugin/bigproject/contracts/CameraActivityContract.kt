@@ -14,7 +14,7 @@ interface CameraActivityContract {
     }
 
     interface Presenter{
-        fun prediction(image : MultipartBody.Part, hair : RequestBody)
+        fun prediction(token : String, image : MultipartBody.Part, hair : RequestBody, gender : RequestBody)
         fun destroy()
     }
 }

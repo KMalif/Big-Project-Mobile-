@@ -22,14 +22,19 @@ class RegisterActivity : AppCompatActivity(), RegisterActivityContract.RegisterA
         doRegister()
     }
 
+//    name : String,username : String,gender : String, noHp : Int, email: String, password : String, role : String
+
     private fun doRegister(){
         binding.btnRegister.setOnClickListener {
             val name = binding.etName.text.toString()
             val userName = binding.etUsername.text.toString()
+            val gender = binding.etGender.text.toString()
+            val noHp = binding.etNohp.text.toString().toInt()
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            if(name.isNotEmpty() && userName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
-                presenter.register(name, userName, email, password)
+            val role = "user"
+            if(name.isNotEmpty() && userName.isNotEmpty() && gender.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
+                presenter.register(name, userName,gender,noHp, email, password,role)
             }else{
                 showToast("Please input all form")
             }

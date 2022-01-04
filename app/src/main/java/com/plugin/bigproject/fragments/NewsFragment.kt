@@ -16,6 +16,7 @@ import com.plugin.bigproject.contracts.FragmentNewsContract
 import com.plugin.bigproject.databinding.FragmentNewsBinding
 import com.plugin.bigproject.models.News
 import com.plugin.bigproject.presenters.FragmentNewsPresenter
+import com.plugin.bigproject.util.Constants
 
 
 class NewsFragment : Fragment(), FragmentNewsContract.View {
@@ -34,7 +35,8 @@ class NewsFragment : Fragment(), FragmentNewsContract.View {
     }
 
     private fun getNews(){
-        presenter?.getNews()
+        val token = Constants.getToken(requireActivity())
+        presenter?.getNews(token)
     }
 
     override fun attachNewsToRecycler(listNews: List<News>) {

@@ -1,7 +1,10 @@
 package com.plugin.bigproject.presenters
 
 import com.plugin.bigproject.contracts.DetailPartnerActivityContract
+import com.plugin.bigproject.models.Antre
+import com.plugin.bigproject.models.Booking
 import com.plugin.bigproject.models.Partners
+import com.plugin.bigproject.responses.WrappedListResponse
 import com.plugin.bigproject.responses.WrappedResponse
 import com.plugin.bigproject.util.APIClient
 import retrofit2.Call
@@ -13,8 +16,8 @@ class ActivityDetailPartnerPresenter(v : DetailPartnerActivityContract.DetailPar
     private var view : DetailPartnerActivityContract.DetailPartnerView? = v
     private var apiService = APIClient.APIService()
 
-    override fun getPartnerbyId(id: Int) {
-        val request = apiService.getPartnerbyId(id)
+    override fun getPartnerbyId(token : String, id: Int) {
+        val request = apiService.getPartnerbyId("Bearer $token",id)
         request.enqueue(object : Callback<WrappedResponse<Partners>>{
             override fun onResponse(
                 call: Call<WrappedResponse<Partners>>,
@@ -40,6 +43,60 @@ class ActivityDetailPartnerPresenter(v : DetailPartnerActivityContract.DetailPar
                 view?.showToast("Check your connection")
                 println(t.message)
                 view?.hideLoading()
+            }
+        })
+    }
+
+    override fun booking(token: String, idMitra: Int, status: String) {
+        val request = apiService.booking("Bearer $token", idMitra, status)
+        request.enqueue(object : Callback<WrappedResponse<Booking>>{
+            override fun onResponse(
+                call: Call<WrappedResponse<Booking>>,
+                response: Response<WrappedResponse<Booking>>
+            ) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body != null ){     
+                        println("Booking ${body.data}")
+                        view?.showToast("Booking Success")
+                        getAntre("Bearer $token", idMitra)
+                    }else{
+                        view?.showToast("Data is Empty")
+                    }
+                }else{
+                    view?.showToast("Something went wrong")
+                }
+            }
+
+            override fun onFailure(call: Call<WrappedResponse<Booking>>, t: Throwable) {
+                println(t.message)
+                view?.showToast("onFailure")
+            }
+        })
+    }
+
+    override fun getAntre(token: String, idMitra: Int) {
+        val request = apiService.getAntre("Bearer $token",idMitra)
+        request.enqueue(object : Callback<WrappedListResponse<Antre>>{
+            override fun onResponse(
+                call: Call<WrappedListResponse<Antre>>,
+                response: Response<WrappedListResponse<Antre>>
+            ) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) {
+                        view?.showWaitinglist(body.data)
+                        println("Antre ${body.data}")
+                    } else {
+                        view?.showToast("Data is Empty")
+                    }
+                }else{
+                    view?.showToast("Something went wrong")
+                }
+            }
+
+            override fun onFailure(call: Call<WrappedListResponse<Antre>>, t: Throwable) {
+                println(t.message)
             }
         })
     }

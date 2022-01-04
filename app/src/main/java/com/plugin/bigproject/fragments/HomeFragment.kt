@@ -61,7 +61,7 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
             partnerAdapter = PartnersAdapter(listMitra, object : PartnersListener{
                 override fun onParnerClick(partners: Partners) {
                     startActivity(Intent(activity, DetailPartnerActivity::class.java).apply {
-                        putExtra("idPartner", partners.id)
+                        putExtra("idPartner", partners.id_mitra)
                     })
                 }
             })

@@ -14,8 +14,8 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
 
     private var view : CameraActivityContract.View? = v
     private var apiService = APIClient.APIService()
-    override fun prediction(image: MultipartBody.Part, hair: RequestBody) {
-        val request = apiService.predict(image, hair)
+    override fun prediction(token : String, image: MultipartBody.Part, hair: RequestBody,gender : RequestBody) {
+        val request = apiService.predict("Bearer $token",image, hair, gender)
         view?.showLoading()
         request.enqueue(object : Callback<WrapperRecomendationResponse<Recomendation>>{
             override fun onResponse(

@@ -61,4 +61,11 @@
     <string name="chatMessage">This is a sample message that will appear</string>
     <string name="haircut">Haircuts</string>
     <string name="Detail">Detail</string>
+    <string name="Gender">Gender</string>
+    <string name="NoHp">Phone Number</string>
+    <string name="Booking">Booking</string>
+    <string name="waitingList">Waiting list</string>
+    <string name="Antre">1</string>
+    <string name="status">Waiting</string>
+    <string name="You">You</string>
 </resources>

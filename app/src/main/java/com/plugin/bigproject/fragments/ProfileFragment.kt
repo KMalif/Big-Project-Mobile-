@@ -13,6 +13,7 @@ import com.plugin.bigproject.activities.EditProfilesActivity
 import com.plugin.bigproject.activities.LoginActivity
 import com.plugin.bigproject.contracts.FragmentProfileContract
 import com.plugin.bigproject.databinding.FragmentProfileBinding
+import com.plugin.bigproject.models.Profile
 import com.plugin.bigproject.models.User
 import com.plugin.bigproject.presenters.FragmentProfilePresenter
 import com.plugin.bigproject.util.Constants
@@ -44,6 +45,7 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         Constants.clearName(requireActivity())
         Constants.clearToken(requireActivity())
         Constants.clearId(requireActivity())
+        Constants.clearGender(requireActivity())
         startActivity(Intent(activity, LoginActivity::class.java))
     }
 
@@ -65,23 +67,23 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         }
     }
 
-    private fun editProfiles(user: User){
+    private fun editProfiles(profile: Profile){
      binding.icEdit.setOnClickListener {
          startActivity(Intent(activity, EditProfilesActivity::class.java).apply {
-             putExtra("Name", user.name)
-             putExtra("Username", user.username)
-             putExtra("Email", user.email)
+             putExtra("Name", profile.nama_user)
+             putExtra("Username", profile.username)
+             putExtra("Email", profile.email)
          })
      }
     }
 
-    override fun showProfiletoView(user: User) {
+    override fun showProfiletoView(profile: Profile) {
         binding.apply {
-            TvName.text = user.name
-            TvEmail.text = user.email
-            TvUsername.text = user.username
+            TvName.text = profile.nama_user
+            TvEmail.text = profile.email
+            TvUsername.text = profile.username
         }
-        editProfiles(user)
+        editProfiles(profile)
     }
 
     override fun showToast(message: String) {
@@ -89,8 +91,8 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
     }
 
     private fun getProfile() {
-        val id = Constants.getId(requireActivity())
-        presenter?.getUserById(id)
+        val token = Constants.getToken(requireActivity())
+        presenter?.getUserById(token)
     }
 
     override fun onResume() {

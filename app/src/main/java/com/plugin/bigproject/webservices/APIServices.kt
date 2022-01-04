@@ -11,7 +11,7 @@ interface APIServices {
 
     //Sign in
     @FormUrlEncoded
-    @POST("signin/")
+    @POST("signin")
     fun login (
         @Field("username") username : String,
         @Field("password") password : String
@@ -19,18 +19,21 @@ interface APIServices {
 
     //Sign up
     @FormUrlEncoded
-    @POST("signup/")
+    @POST("signup")
     fun register (
-        @Field("name") name : String,
+        @Field("nama_user") name : String,
         @Field("username") username : String,
+        @Field("gender") gender : String,
+        @Field("no_hp") no_hp : Int,
         @Field("email") email : String,
-        @Field("password") password : String
+        @Field("password") password : String,
+        @Field("role") role : String
     ):Call<WrappedResponse<User>>
 
-    @GET("user/{id}")
+    @GET("user")
     fun getUserById(
-        @Path("id") id : Int
-    ): Call<WrappedResponse<User>>
+        @Header("Authorization") api_token: String
+    ): Call<WrappedResponse<Profile>>
 
     //Edit profile
     @FormUrlEncoded
@@ -59,7 +62,7 @@ interface APIServices {
     ): Call<WrappedListResponse<HairCuts>>
 
     //get Partners
-    @GET("mitra/")
+    @GET("mitra")
     fun getPartners(
         @Header("Authorization") api_token: String
     ): Call<WrappedListResponse<Partners>>
@@ -67,6 +70,7 @@ interface APIServices {
     //get Partners
     @GET("mitra/{id}")
     fun getPartnerbyId(
+        @Header("Authorization") api_token: String,
         @Path("id") id: Int
     ): Call<WrappedResponse<Partners>>
 
@@ -77,9 +81,9 @@ interface APIServices {
     ): Call<WrappedListResponse<BarberMan>>
 
     //get news
-    @GET("berita/")
+    @GET("berita")
     fun getNews(
-
+        @Header("Authorization") api_token: String
     ):Call<WrappedListResponse<News>>
 
     //GEt newsbyID
@@ -90,10 +94,12 @@ interface APIServices {
 
 
     @Multipart
-    @POST("predict/")
+    @POST("predict")
     fun predict(
+        @Header("Authorization") api_token: String,
         @Part files : MultipartBody.Part,
-        @Part("panjang") panjang : RequestBody
+        @Part("panjang") panjang : RequestBody,
+        @Part("gender") gender : RequestBody
     ):Call<WrapperRecomendationResponse<Recomendation>>
 
     @FormUrlEncoded
@@ -107,5 +113,25 @@ interface APIServices {
     fun getPreviousChat(
         @Header("Authorization") api_token: String
     ):Call<PreviousChatResponse<Message>>
+
+    @FormUrlEncoded
+    @POST("bookUser")
+    fun booking(
+        @Header("Authorization") api_token: String,
+        @Field("id_mitra") idMitra : Int,
+        @Field("status") status : String
+    ): Call<WrappedResponse<Booking>>
+
+    @GET("bookUser")
+    fun getBookingHistory(
+        @Header("Authorization") api_token: String
+    ): Call<WrappedListResponse<Booking>>
+
+    @GET("antrian/{id}")
+    fun getAntre(
+        @Header("Authorization") api_token: String,
+        @Path("id") id_mitra : Int
+
+    ):Call<WrappedListResponse<Antre>>
 
 }

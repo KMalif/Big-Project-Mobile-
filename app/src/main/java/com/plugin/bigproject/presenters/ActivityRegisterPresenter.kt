@@ -13,8 +13,8 @@ class ActivityRegisterPresenter (v : RegisterActivityContract.RegisterActivityVi
     : RegisterActivityContract.RegisterActivityPresenter{
     private var view : RegisterActivityContract.RegisterActivityView? = v
     private var apiService = APIClient.APIService()
-    override fun register(name: String, username: String, email: String, password: String) {
-        val request = apiService.register(name,username, email, password)
+    override fun register(name : String,username : String,gender : String, noHp : Int, email: String, password : String, role : String) {
+        val request = apiService.register(name, username, gender, noHp, email, password, role)
         view?.showLoading()
         request.enqueue(object : Callback<WrappedResponse<User>> {
             override fun onResponse(

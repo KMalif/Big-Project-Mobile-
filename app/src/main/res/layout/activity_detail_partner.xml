@@ -77,7 +77,8 @@
             android:layout_marginTop="16dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TitleDetail">
+            app:layout_constraintTop_toBottomOf="@id/TitleDetail"
+            app:layout_constraintEnd_toStartOf="@id/card2">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -142,6 +143,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:id="@+id/TvJmlCrews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_user"
@@ -161,6 +163,7 @@
             android:id="@+id/TitleCrews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card1"
             android:layout_marginStart="16dp"
@@ -184,6 +187,7 @@
             android:id="@+id/rvCrew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/TitleCrews"
@@ -194,6 +198,7 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2" />
+
 
         <TextView
             android:id="@+id/TitleMaps"
@@ -209,6 +214,50 @@
             android:textSize="@dimen/name"
             android:textStyle="bold"
             android:text="@string/location" />
+
+        <TextView
+            android:id="@+id/TitleWaitingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TitleMaps"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"
+            android:text="@string/waitingList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWaitingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TitleWaitingList"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            tools:listitem="@layout/list_antre"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+        <Button
+            android:id="@+id/BtnBooking"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/custom_card"
+            android:text="@string/Booking"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvWaitingList" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

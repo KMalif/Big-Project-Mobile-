@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
             app:cardCornerRadius="10dp"
@@ -115,7 +115,7 @@
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etUsername" />
+                    app:layout_constraintTop_toBottomOf="@id/etNohp" />
 
                 <EditText
                     android:id="@+id/etPassword"
@@ -136,6 +136,46 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+                <EditText
+                    android:id="@+id/etNohp"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:autofillHints="password"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/NoHp"
+                    android:inputType="phone"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etGender" />
+
+                <EditText
+                    android:id="@+id/etGender"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:autofillHints="password"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_gender"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/Gender"
+                    android:inputType="text"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etUsername" />
 
                 <ProgressBar
                     android:id="@+id/loading"

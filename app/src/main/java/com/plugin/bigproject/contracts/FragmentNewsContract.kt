@@ -11,7 +11,7 @@ interface FragmentNewsContract {
     }
 
     interface Presenter{
-        fun getNews()
+        fun getNews(token : String)
         fun destroy()
     }
 }

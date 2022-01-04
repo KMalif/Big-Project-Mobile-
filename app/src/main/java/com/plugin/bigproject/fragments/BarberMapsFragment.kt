@@ -5,13 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mapbox.android.core.MapboxSdkInfoForUserAgentGenerator.getInstance
-import com.mapbox.bindgen.None.getInstance
-import com.mapbox.common.HttpServiceFactory.getInstance
+import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.maps.MapboxMap
 import com.mapbox.maps.Style
-import com.mapbox.maps.plugin.Plugin
-import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.FragmentBarberMapsBinding
 
 class BarberMapsFragment : Fragment() {
@@ -19,7 +15,7 @@ class BarberMapsFragment : Fragment() {
     private var _binding : FragmentBarberMapsBinding? = null
     private val binding get() = _binding!!
     //map
-
+    private lateinit var map : MapboxMap
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +30,6 @@ class BarberMapsFragment : Fragment() {
     private fun barberMapSetup(){
         binding.mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS)
     }
-
-
 
 
 }

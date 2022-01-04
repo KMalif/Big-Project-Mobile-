@@ -42,6 +42,7 @@ class ActivityChatPresenter(v : ChatbotActivityContract.View?) : ChatbotActivity
                 println("Onfailure ${t.message}")
                 view?.showToast("Onfailure")
             }
+
         })
 
     }
@@ -57,6 +58,7 @@ class ActivityChatPresenter(v : ChatbotActivityContract.View?) : ChatbotActivity
                     val body = response.body()
                     if (body != null){
                         view?.showPreviousChat(body.data)
+                        println("Previuos Chat ${body.data}")
                     }else{
                         view?.showToast("Data is Empty")
                         println("Data is Empty ${response.errorBody()}")

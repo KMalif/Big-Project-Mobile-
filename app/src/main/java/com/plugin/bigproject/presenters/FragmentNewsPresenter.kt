@@ -12,8 +12,8 @@ class FragmentNewsPresenter (v : FragmentNewsContract.View?): FragmentNewsContra
     private var view : FragmentNewsContract.View? = v
     private var apiService = APIClient.APIService()
 
-    override fun getNews() {
-        val request = apiService.getNews()
+    override fun getNews(token : String) {
+        val request = apiService.getNews("Bearer $token")
         request.enqueue(object : Callback<WrappedListResponse<News>>{
             override fun onResponse(
                 call: Call<WrappedListResponse<News>>,

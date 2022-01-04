@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
 
 }
 
@@ -68,6 +69,8 @@ dependencies {
 
     //Mapbox
     implementation 'com.mapbox.maps:android:10.2.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.5'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
 
 
 

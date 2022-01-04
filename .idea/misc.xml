@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/layout/activity_camera.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_chatbot.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_detail_news.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/activity_detail_partner.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_detail_partner.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_detail_profile.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_detail_trending.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_edit_profiles.xml" value="0.19791666666666666" />
@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/list_antre.xml" value="0.5" />
         <entry key="app/src/main/res/layout/list_crew.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/list_news.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/list_partner.xml" value="0.5" />

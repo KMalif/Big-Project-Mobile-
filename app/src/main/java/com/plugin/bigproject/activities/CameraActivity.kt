@@ -17,6 +17,7 @@ import com.plugin.bigproject.contracts.CameraActivityContract
 import com.plugin.bigproject.databinding.ActivityCameraBinding
 import com.plugin.bigproject.models.Recomendation
 import com.plugin.bigproject.presenters.CameraActivityPresenter
+import com.plugin.bigproject.util.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -108,7 +109,9 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
         }
         val hair = binding.EtHair.text.toString().toRequestBody(MultipartBody.FORM)
-        presenter?.prediction(image!!, hair)
+        val gender = Constants.getGender(this).toRequestBody(MultipartBody.FORM)
+        val token = Constants.getToken(this)
+        presenter?.prediction(token,image!!, hair,gender)
     }
 
     override fun showToast(message: String) {
