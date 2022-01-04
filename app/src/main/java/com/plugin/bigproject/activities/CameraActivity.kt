@@ -43,7 +43,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         btnChooseListener()
         btnUploadListener()
         cameraLaunch()
-
     }
 
     override fun onResume() {
@@ -92,7 +91,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         binding.BtnCamera.setOnClickListener {  imagePickerLauncher.launch(CameraOnlyConfig())}
 
     }
-
     private fun showImage(){
         choosedImage?.let{
                 image -> binding.ImageDetail.setImageURI(image.uri)
@@ -111,6 +109,8 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         val hair = binding.EtHair.text.toString().toRequestBody(MultipartBody.FORM)
         val gender = Constants.getGender(this).toRequestBody(MultipartBody.FORM)
         val token = Constants.getToken(this)
+
+        println("hair $hair gender $gender token $token")
         presenter?.prediction(token,image!!, hair,gender)
     }
 
