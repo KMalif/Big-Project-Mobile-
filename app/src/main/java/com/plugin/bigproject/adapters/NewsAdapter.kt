@@ -1,5 +1,7 @@
 package com.plugin.bigproject.adapters
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,12 @@ class NewsAdapter (private var listNews : List<News>, private val listener: News
 
             tvHeadlines.text = listNews[position].title
             tvDescription.text =listNews[position].content
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                tvDescription.text = Html.fromHtml(listNews[position].content, Html.FROM_HTML_MODE_COMPACT)
+            }else{
+                tvDescription.text = Html.fromHtml(listNews[position].content)
+            }
         }
 
         holder.itemView.setOnClickListener {

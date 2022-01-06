@@ -6,7 +6,7 @@
     <string name="Predict">Predict</string>
     <string name="User">User</string>
     <string name="greet">Wellcome back</string>
-    <string name="name">Khafidul Mualif</string>
+    <string name="name">Jhon Doe</string>
     <string name="trending">Trending</string>
     <string name="mitra">Our Partner</string>
     <string name="Profile">Profile</string>
@@ -19,7 +19,7 @@
     <string name="Email">Email</string>
     <string name="haircutName">Top Fade</string>
     <string name="barberName">Scisorism</string>
-    <string name="barberAddress">Tegal</string>
+    <string name="barberAddress">Jl. Sumbodro Tegal</string>
     <string name="Maps">Maps</string>
     <string name="Placeholder">Placeholder</string>
     <string name="ChooseImg">Choose Image</string>
@@ -28,7 +28,7 @@
     <string name="Favorites">Favorites</string>
     <string name="open_camera">open camera</string>
     <string name="Name">Name</string>
-    <string name="EmailAddress">khafidulmualif@gmail.com</string>
+    <string name="EmailAddress">jhondoe@gmail.com</string>
     <string name="YourFavorites">Your Favorites Haircuts</string>
     <string name="News">News</string>
     <string name="PasswordHashed">*************</string>
@@ -52,6 +52,11 @@
     <string-array name="hair">
         <item>panjang</item>
         <item>pendek</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>male</item>
+        <item>female</item>
     </string-array>
     <string name="ChooseImage">Choose Image</string>
     <string name="Shape">Square</string>

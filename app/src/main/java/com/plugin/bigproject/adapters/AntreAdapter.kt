@@ -23,13 +23,13 @@ class AntreAdapter(private var waitingList : List<Antre>, val context: Context):
         if (curent.status.equals("menunggu") && curent.nama_user.equals(namaUser)){
             holder.binding.apply {
                 tvAntre.setText("${curent.no_urut}")
-                tvStatus.setText(curent.status)
+                tvStatus.setText("Waiting")
                 tvYou.visibility = View.VISIBLE
             }
         }else if(curent.status.equals("menunggu")){
             holder.binding.apply {
                 tvAntre.setText("${curent.no_urut}")
-                tvStatus.setText(curent.status)
+                tvStatus.setText("Waiting")
             }
         }
     }

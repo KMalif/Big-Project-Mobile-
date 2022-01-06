@@ -155,27 +155,57 @@
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etGender" />
+                    app:layout_constraintTop_toBottomOf="@id/InputLayout" />
 
-                <EditText
-                    android:id="@+id/etGender"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:autofillHints="password"
+<!--                <EditText-->
+<!--                    android:id="@+id/etGender"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:autofillHints="password"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:background="@drawable/custom_input"-->
+<!--                    android:drawableStart="@drawable/ic_gender"-->
+<!--                    android:drawablePadding="12dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="@string/Gender"-->
+<!--                    android:inputType="text"-->
+<!--                    android:paddingStart="12dp"-->
+<!--                    android:paddingEnd="12dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/etUsername" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/InputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/custom_input"
-                    android:drawableStart="@drawable/ic_gender"
-                    android:drawablePadding="12dp"
-                    android:ems="10"
-                    android:hint="@string/Gender"
-                    android:inputType="text"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etUsername" />
+                    app:layout_constraintTop_toBottomOf="@id/etUsername">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/EtGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_gender"
+                        android:inputType="none"
+                        android:drawablePadding="12dp"
+                        android:text="@string/Gender"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <ProgressBar
                     android:id="@+id/loading"

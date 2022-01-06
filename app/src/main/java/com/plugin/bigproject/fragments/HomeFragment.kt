@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.plugin.bigproject.activities.ChatbotActivity
 import com.plugin.bigproject.activities.DetailPartnerActivity
+import com.plugin.bigproject.adapters.HaircutsAdapter
 import com.plugin.bigproject.adapters.PartnersAdapter
 import com.plugin.bigproject.adapters.PartnersListener
 import com.plugin.bigproject.contracts.FragmentHomeContract
 import com.plugin.bigproject.databinding.FragmentHomeBinding
+import com.plugin.bigproject.models.HairCuts
 import com.plugin.bigproject.models.Partners
 import com.plugin.bigproject.presenters.FragmentHomePresenter
 import com.plugin.bigproject.util.Constants
@@ -25,9 +27,9 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
     private val binding get() = _binding!!
     private var presenter : FragmentHomeContract.FragmentHomePresenter? = null
     private lateinit var partnerAdapter : PartnersAdapter
+    private lateinit var haircutsAdapter: HaircutsAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        detailPartner()
         setName()
         fabChatbotlistener()
         presenter = FragmentHomePresenter(this)
@@ -44,15 +46,20 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
         binding.TvName.text = name
     }
 
-    private fun detailPartner(){
-        binding.TvMitra.setOnClickListener {
-            startActivity(Intent(activity, DetailPartnerActivity::class.java))
-        }
-    }
-
-    private fun getMitra(){
+    private fun getData(){
         val token = Constants.getToken(requireActivity())
         presenter?.getMitra(token)
+        presenter?.getHaircuts(token)
+    }
+
+    override fun attachHaircutToRecycler(haircuts: List<HairCuts>) {
+        binding.RvHaircuts.apply{
+            haircutsAdapter = HaircutsAdapter(haircuts)
+            val mLayout = LinearLayoutManager(activity)
+            mLayout.orientation = LinearLayoutManager.HORIZONTAL
+            adapter = haircutsAdapter
+            layoutManager = mLayout
+        }
     }
 
     override fun attachMitraToRecycler(listMitra: List<Partners>) {
@@ -98,7 +105,7 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
 
     override fun onResume() {
         super.onResume()
-        getMitra()
+        getData()
     }
 
 }

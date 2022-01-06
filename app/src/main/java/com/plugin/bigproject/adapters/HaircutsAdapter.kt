@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.plugin.bigproject.databinding.ListTrendingBinding
 import com.plugin.bigproject.models.HairCuts
 
-class HaircutsAdapter(private var listHaircut : List<HairCuts>, private val listener: HaircutsListener)
+class HaircutsAdapter(private var listHaircut : List<HairCuts>)
     :RecyclerView.Adapter<HaircutsAdapter.HaircutsViewholder>()
 {
         inner class HaircutsViewholder(val binding: ListTrendingBinding) : RecyclerView.ViewHolder(binding.root)
@@ -21,10 +21,7 @@ class HaircutsAdapter(private var listHaircut : List<HairCuts>, private val list
             Glide.with(holder.itemView)
                 .load(listHaircut[position].image)
                 .into(Thumbnail)
-            HaircutName.text = listHaircut[position].nama
-        }
-        holder.itemView.setOnClickListener {
-            listener.onHaircutClick(listHaircut[position])
+            HaircutName.text = listHaircut[position].nama_model
         }
     }
 
@@ -33,6 +30,3 @@ class HaircutsAdapter(private var listHaircut : List<HairCuts>, private val list
     }
 }
 
-interface HaircutsListener{
-    fun onHaircutClick(hairCuts: HairCuts)
-}

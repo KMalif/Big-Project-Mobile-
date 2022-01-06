@@ -45,7 +45,7 @@ class NewsFragment : Fragment(), FragmentNewsContract.View {
             newsAdapter = NewsAdapter(listNews, object : NewsListener{
                 override fun onNewsClick(news: News) {
                     startActivity(Intent(activity, DetailNewsActivity::class.java).apply {
-                        putExtra("idNews", news.id)
+                        putExtra("idNews", news.id_news)
                     })
                 }
             })

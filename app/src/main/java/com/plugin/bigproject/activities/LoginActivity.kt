@@ -29,10 +29,9 @@ class LoginActivity : AppCompatActivity(), LoginActivityContract.LoginActivityVi
     }
 
     private fun isLogin(){
-        val name = Constants.getName(this)
+        val token = Constants.getToken(this)
 
-        println("Name "+Constants.getName(this))
-        if (name != "JhonDoe"){
+        if (token.isNotEmpty() && token != "UNDEFINED"){
             startActivity(Intent(this, MainActivity::class.java).also { finish() })
         }
     }

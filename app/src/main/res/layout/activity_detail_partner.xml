@@ -103,6 +103,7 @@
                     android:drawableStart="@drawable/ic_maps"
                     android:layout_gravity="center"
                     android:text="@string/barberAddress"
+                    android:maxLength="12"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -215,13 +216,27 @@
             android:textStyle="bold"
             android:text="@string/location" />
 
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/maps"
+            app:layout_constraintTop_toBottomOf="@id/TitleMaps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="fitXY"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            />
+
         <TextView
             android:id="@+id/TitleWaitingList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TitleMaps"
+            app:layout_constraintTop_toBottomOf="@id/map"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"

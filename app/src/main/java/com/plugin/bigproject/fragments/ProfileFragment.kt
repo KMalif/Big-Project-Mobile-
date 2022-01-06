@@ -1,5 +1,6 @@
 package com.plugin.bigproject.fragments
 
+
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +15,6 @@ import com.plugin.bigproject.activities.LoginActivity
 import com.plugin.bigproject.contracts.FragmentProfileContract
 import com.plugin.bigproject.databinding.FragmentProfileBinding
 import com.plugin.bigproject.models.Profile
-import com.plugin.bigproject.models.User
 import com.plugin.bigproject.presenters.FragmentProfilePresenter
 import com.plugin.bigproject.util.Constants
 
@@ -29,24 +29,26 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater,container, false)
-        showAlertDialogue()
         presenter = FragmentProfilePresenter(this)
-        detailBtnListener()
+        btnLogout()
         return binding.root
     }
 
-    private fun detailBtnListener(){
-        binding.BtnDetail.setOnClickListener {
-            startActivity(Intent(activity, DetailProfileActivity::class.java))
+    private fun btnLogout(){
+        binding.BtnLogout.setOnClickListener {
+            showAlertDialogue()
         }
     }
 
     private fun logout(){
-        Constants.clearName(requireActivity())
-        Constants.clearToken(requireActivity())
-        Constants.clearId(requireActivity())
-        Constants.clearGender(requireActivity())
-        startActivity(Intent(activity, LoginActivity::class.java))
+        val intent = Intent(activity, LoginActivity::class.java).also {
+            Constants.clearName(requireActivity())
+            Constants.clearToken(requireActivity())
+            Constants.clearId(requireActivity())
+            Constants.clearGender(requireActivity())
+        }
+        activity?.startActivity(intent)
+        activity?.finish()
     }
 
     private fun showAlertDialogue(){
@@ -67,12 +69,26 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         }
     }
 
+    private fun detailBtnListener(profile : Profile){
+        binding.BtnDetail.setOnClickListener {
+            startActivity(Intent(activity, DetailProfileActivity::class.java).apply {
+                putExtra("Name", profile.nama_user)
+                putExtra("Username", profile.username)
+                putExtra("Email", profile.email)
+                putExtra("NoHp",  profile.no_hp)
+                putExtra("Gender", profile.gender)
+            })
+        }
+    }
+
     private fun editProfiles(profile: Profile){
      binding.icEdit.setOnClickListener {
          startActivity(Intent(activity, EditProfilesActivity::class.java).apply {
              putExtra("Name", profile.nama_user)
              putExtra("Username", profile.username)
              putExtra("Email", profile.email)
+             putExtra("NoHp",  profile.no_hp)
+             putExtra("Gender", profile.gender)
          })
      }
     }
@@ -84,6 +100,7 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
             TvUsername.text = profile.username
         }
         editProfiles(profile)
+        detailBtnListener(profile)
     }
 
     override fun showToast(message: String) {

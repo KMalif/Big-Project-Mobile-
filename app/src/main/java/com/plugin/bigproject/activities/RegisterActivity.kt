@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.plugin.bigproject.R
 import com.plugin.bigproject.contracts.RegisterActivityContract
@@ -20,15 +21,21 @@ class RegisterActivity : AppCompatActivity(), RegisterActivityContract.RegisterA
         presenter = ActivityRegisterPresenter(this)
         supportActionBar?.hide()
         doRegister()
+        setUpgenderDropdown()
     }
 
-//    name : String,username : String,gender : String, noHp : Int, email: String, password : String, role : String
+
+    private fun setUpgenderDropdown(){
+        val gender = resources.getStringArray(R.array.gender)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, gender)
+        binding.EtGender.setAdapter(arrayAdapter)
+    }
 
     private fun doRegister(){
         binding.btnRegister.setOnClickListener {
             val name = binding.etName.text.toString()
             val userName = binding.etUsername.text.toString()
-            val gender = binding.etGender.text.toString()
+            val gender = binding.EtGender.text.toString()
             val noHp = binding.etNohp.text.toString().toInt()
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()

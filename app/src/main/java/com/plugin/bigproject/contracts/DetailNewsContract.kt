@@ -9,7 +9,7 @@ interface DetailNewsContract {
     }
 
     interface DetailNewsPresenter{
-        fun getDetailNews(id : Int)
+        fun getDetailNews(id : Int, token : String)
         fun destroy()
     }
 }

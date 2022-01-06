@@ -11,8 +11,8 @@ import retrofit2.Response
 class ActivityDetailNewsPresenter(v : DetailNewsContract.DetailNewsView?) : DetailNewsContract.DetailNewsPresenter {
     private var view : DetailNewsContract.DetailNewsView? = v
     private var apiService = APIClient.APIService()
-    override fun getDetailNews(id: Int) {
-        val request = apiService.getNewsByID(id)
+    override fun getDetailNews(id: Int, token : String) {
+        val request = apiService.getNewsByID(id, "Bearer $token")
         request.enqueue(object : Callback<WrappedResponse<News>>{
             override fun onResponse(
                 call: Call<WrappedResponse<News>>,

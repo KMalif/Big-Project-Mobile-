@@ -56,9 +56,9 @@ interface APIServices {
     ): Call<WrappedResponse<User>>
 
     //get Haircuts
-    @GET("haircuts")
+    @GET("hairmodel")
     fun getHaircuts(
-
+        @Header("Authorization") api_token: String
     ): Call<WrappedListResponse<HairCuts>>
 
     //get Partners
@@ -81,15 +81,16 @@ interface APIServices {
     ): Call<WrappedListResponse<BarberMan>>
 
     //get news
-    @GET("berita")
+    @GET("news")
     fun getNews(
         @Header("Authorization") api_token: String
     ):Call<WrappedListResponse<News>>
 
     //GEt newsbyID
-    @GET("berita/{id}")
+    @GET("news/{id}")
     fun getNewsByID(
-        @Path("id") id : Int
+        @Path("id") id : Int,
+        @Header("Authorization") api_token: String
     ):Call<WrappedResponse<News>>
 
 

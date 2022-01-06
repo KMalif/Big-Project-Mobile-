@@ -34,7 +34,7 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
                         view?.hideLoading()
                     }
                 }else{
-                    println("RESPONSE " + response.errorBody())
+                    println("RESPONSE " + response.errorBody().toString())
                     println("RESPONSE " + response)
                     view?.hideLoading()
                 }

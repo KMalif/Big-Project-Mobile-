@@ -1,10 +1,11 @@
 package com.plugin.bigproject.contracts
 
+import com.plugin.bigproject.models.HairCuts
 import com.plugin.bigproject.models.Partners
 
 interface FragmentHomeContract {
     interface FragmentHomeView{
-//        fun attachTrendToRecycler(listTrend : List<HairCuts>)
+        fun attachHaircutToRecycler(haircuts : List<HairCuts>)
         fun attachMitraToRecycler(listMitra : List<Partners>)
         fun showToast(message : String)
         fun showLoading()
@@ -12,7 +13,7 @@ interface FragmentHomeContract {
     }
 
     interface FragmentHomePresenter{
-//        fun getTrend()
+        fun getHaircuts(token: String)
         fun getMitra(token: String)
         fun destroy()
     }

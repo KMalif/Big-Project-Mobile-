@@ -1,6 +1,7 @@
 package com.plugin.bigproject.presenters
 
 import com.plugin.bigproject.contracts.FragmentHomeContract
+import com.plugin.bigproject.models.HairCuts
 import com.plugin.bigproject.models.Partners
 import com.plugin.bigproject.responses.WrappedListResponse
 import com.plugin.bigproject.util.APIClient
@@ -39,6 +40,30 @@ class FragmentHomePresenter(v : FragmentHomeContract.FragmentHomeView?) : Fragme
                 view?.showToast("Can't connect to server")
                 println(t.message)
                 view?.hideLoading()
+            }
+        })
+    }
+
+    override fun getHaircuts(token: String) {
+        val request = apiService.getHaircuts("Bearer $token")
+        request.enqueue(object : Callback<WrappedListResponse<HairCuts>>{
+            override fun onResponse(
+                call: Call<WrappedListResponse<HairCuts>>,
+                response: Response<WrappedListResponse<HairCuts>>
+            ) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body != null ){
+                        view?.attachHaircutToRecycler(body.data)
+                    }
+                }else {
+                    view?.showToast("Something went wrong")
+                    println(response.errorBody())
+                }
+            }
+
+            override fun onFailure(call: Call<WrappedListResponse<HairCuts>>, t: Throwable) {
+                println(t.message)
             }
         })
     }
