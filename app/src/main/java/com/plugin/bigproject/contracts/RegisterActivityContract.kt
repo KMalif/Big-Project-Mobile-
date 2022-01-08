@@ -11,7 +11,7 @@ interface RegisterActivityContract {
     }
 
     interface RegisterActivityPresenter{
-        fun register (name : String,username : String,gender : String, noHp : Int, email: String, password : String, role : String)
+        fun register (name : String,username : String,gender : String, noHp : String, email: String, password : String, role : String)
         fun destroy()
     }
 }

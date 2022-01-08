@@ -24,7 +24,7 @@ interface APIServices {
         @Field("nama_user") name : String,
         @Field("username") username : String,
         @Field("gender") gender : String,
-        @Field("no_hp") no_hp : Int,
+        @Field("no_hp") no_hp : String,
         @Field("email") email : String,
         @Field("password") password : String,
         @Field("role") role : String

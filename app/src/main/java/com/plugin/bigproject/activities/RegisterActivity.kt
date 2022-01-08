@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity(), RegisterActivityContract.RegisterA
             val name = binding.etName.text.toString()
             val userName = binding.etUsername.text.toString()
             val gender = binding.EtGender.text.toString()
-            val noHp = binding.etNohp.text.toString().toInt()
+            val noHp = binding.etNohp.text.toString()
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             val role = "user"

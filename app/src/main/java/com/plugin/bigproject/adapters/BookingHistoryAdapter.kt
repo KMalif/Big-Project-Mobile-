@@ -21,11 +21,10 @@ class BookingHistoryAdapter(private val listHistory : List<BookHistory>) :Recycl
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val history = listHistory[position]
         val tanggal = listHistory[position].date
-        val formater = DateTimeFormatter.ofPattern("dd/MM/yyy")
         holder.binding.apply {
             Address.text = history.alamat_mitra
             BarberName.text = history.nama_mitra
-            tvDate.text = tanggal?.format(formater)
+            tvDate.text = tanggal
         }
     }
 

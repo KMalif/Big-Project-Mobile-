@@ -85,7 +85,7 @@ class DetailPartnerActivity : AppCompatActivity(), DetailPartnerActivityContract
                 .build()
 
             it.animateCamera(CameraUpdateFactory.newCameraPosition(position), 1000)
-            it.addMarker(MarkerOptions().setPosition(location).title(partner.nama_mitra))
+            it.addMarker(MarkerOptions().setPosition(location).title(partner.alamat_mitra))
         }
     }
 
