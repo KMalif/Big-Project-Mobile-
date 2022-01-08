@@ -4,12 +4,15 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.tabs.TabLayoutMediator
+import com.plugin.bigproject.adapters.UserViewPagerAdapter
 import com.plugin.bigproject.databinding.ActivityDetailProfileBinding
 import com.plugin.bigproject.models.Profile
 import com.plugin.bigproject.util.Constants
 
 class DetailProfileActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailProfileBinding
+    private lateinit var userViewPagerAdapter: UserViewPagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailProfileBinding.inflate(layoutInflater)
@@ -17,7 +20,7 @@ class DetailProfileActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.setDisplayHomeAsUpEnabled(true)
         actionbar.title = "Detail User"
-        setDetailProfile()
+        setupViewPager()
 
     }
 
@@ -26,52 +29,18 @@ class DetailProfileActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setDetailProfile(){
-        binding.apply {
-            val username = intent.getStringExtra("Username")
-            val name = intent.getStringExtra("Name")
-            val email = intent.getStringExtra("Email")
-            val hp = intent.getStringExtra("NoHp")
-            val gender = intent.getStringExtra("Gender")
-            TvUsername.text = username
-            TvName.text = name
-            Tvuser.text = username
-            TvEmail.text = email
-            TvHp.text = hp
-            TvGender.text = gender
+    private fun setupViewPager(){
+        userViewPagerAdapter = UserViewPagerAdapter(supportFragmentManager, lifecycle)
+        with(binding){
+            ViewPager.adapter = userViewPagerAdapter
+
+            TabLayoutMediator(Tab, ViewPager){ tab, position ->
+                when(position){
+                    0 -> tab.text = "Profile"
+                    1 -> tab.text = "Booking"
+                }
+
+            }.attach()
         }
     }
-
-//    private fun checkIsLoggedIn(){
-//        val token = Constants.getToken(this)
-//        if(token.equals("UNDEFINED")){
-//            startActivity(Intent(this, LoginActivity::class.java).also { finish() })
-//        }
-//    }
-//
-//    private fun logout(){
-//        Constants.clearName(this)
-//        Constants.clearToken(this)
-//        Constants.clearId(this)
-//        Constants.clearGender(this)
-//        checkIsLoggedIn()
-//    }
-//
-//    private fun showAlertDialogue(){
-//        binding.BtnLogout.setOnClickListener {
-//            val builder = AlertDialog.Builder(this)
-//            builder.setTitle("Logout")
-//            builder.setMessage("Are you sure ?")
-//
-//            builder.setPositiveButton("Yes") { dialog, which ->
-//                logout()
-//            }
-//
-//            builder.setNegativeButton("Cancel") { dialog, which ->
-//                dialog.cancel()
-//            }
-//
-//            builder.show()
-//        }
-//    }
 }

@@ -30,7 +30,10 @@ class APIClient {
 
 class Constants{
     companion object{
-        const val API_ENDPOINT = "https://hair-cutz-backend.herokuapp.com/"
+        const val API_ENDPOINT = "https://haircutzcom-622f1098a38b.cloudora-app.com:8000/"
+
+//        https://hair-cutz-backend.herokuapp.com/
+//        https://haircutzcom-622f1098a38b.cloudora-app.com/
         fun getToken(context: Context): String {
             val pref = context.getSharedPreferences("TOKEN", MODE_PRIVATE)
             val token = pref?.getString("TOKEN", "UNDEFINED")

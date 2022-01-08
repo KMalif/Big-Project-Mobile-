@@ -31,7 +31,6 @@ class DetailPartnerActivity : AppCompatActivity(), DetailPartnerActivityContract
         Mapbox.getInstance(applicationContext, getString(R.string.mapbox_access_token))
         binding = ActivityDetailPartnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.map.onCreate(savedInstanceState)
         presenter = ActivityDetailPartnerPresenter(this)
         supportActionBar?.hide()
         back()

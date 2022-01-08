@@ -31,23 +31,22 @@ class BarberMapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync {
             it.setStyle(Style.MAPBOX_STREETS)
 
-            val location = LatLng(-6.879704,109.125595)
+            val location = LatLng(-6.868366363640801,109.10727652174644)
             val position = CameraPosition.Builder()
-                .target(LatLng(-6.879704,109.125595))
+                .target(LatLng(-6.868366363640801,109.10727652174644))
                 .zoom(12.0)
                 .tilt(4.5)
                 .bearing(7.3)
                 .build()
 
             it.animateCamera(CameraUpdateFactory.newCameraPosition(position), 3000)
-            it.addMarker(MarkerOptions().setPosition(location).title("Plugin Tegal"))
+            it.addMarker(MarkerOptions().setPosition(location).title("You"))
         }
-
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

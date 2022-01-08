@@ -126,7 +126,7 @@ interface APIServices {
     @GET("bookUser")
     fun getBookingHistory(
         @Header("Authorization") api_token: String
-    ): Call<WrappedListResponse<Booking>>
+    ): Call<WrappedListResponse<BookHistory>>
 
     @GET("antrian/{id}")
     fun getAntre(
