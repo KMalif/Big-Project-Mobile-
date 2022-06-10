@@ -32,7 +32,7 @@ class BarberMapsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.mapView.getMapAsync {
-            it.setStyle(Style.MAPBOX_STREETS)
+            it.setStyle(Style.TRAFFIC_DAY)
 
             val location = LatLng(-6.868366363640801,109.10727652174644)
             val position = CameraPosition.Builder()
