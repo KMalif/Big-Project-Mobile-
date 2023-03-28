@@ -84,17 +84,18 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
     }
 
     override fun showLoading() {
-        binding.loading.apply {
-            isIndeterminate = true
-            visibility = View.VISIBLE
-        }
+        binding.shimmerBarber.startShimmer()
+        binding.shimmerHaricuts.startShimmer()
     }
 
     override fun hideLoading() {
-        binding.loading.apply {
-            isIndeterminate = false
-            progress = 0
-            visibility = View.GONE
+        binding.shimmerHaricuts.apply {
+            hideShimmer()
+
+        }
+        binding.shimmerBarber.apply {
+            hideShimmer()
+
         }
     }
 

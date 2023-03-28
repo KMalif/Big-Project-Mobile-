@@ -34,9 +34,9 @@ class BarberMapsFragment : Fragment() {
         binding.mapView.getMapAsync {
             it.setStyle(Style.TRAFFIC_DAY)
 
-            val location = LatLng(-6.868366363640801,109.10727652174644)
+            val location = LatLng(-6.868707,109.106704)
             val position = CameraPosition.Builder()
-                .target(LatLng(-6.868366363640801,109.10727652174644))
+                .target(LatLng(-6.868707,109.106704))
                 .zoom(12.0)
                 .tilt(4.5)
                 .bearing(7.3)

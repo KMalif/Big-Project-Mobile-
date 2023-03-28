@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 class APIClient {
     companion object{
         private var retrofit: Retrofit? = null
@@ -33,6 +34,7 @@ class Constants{
         const val API_ENDPOINT = "https://hair-cutz-backend.herokuapp.com/"
             //"https://haircutzcom-622f1098a38b.cloudora-app.com:8000/"
 
+        //http://45.80.181.24:8080/
 //        https://hair-cutz-backend.herokuapp.com/
 //        https://haircutzcom-622f1098a38b.cloudora-app.com/
         fun getToken(context: Context): String {
