@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.plugin.bigproject.fragments.BookinghistoryFragment
 import com.plugin.bigproject.fragments.DetailuserFragment
+import com.plugin.bigproject.fragments.HistoryFragment
 
 class UserViewPagerAdapter(fragmentManager : FragmentManager, lifecycle: Lifecycle) :FragmentStateAdapter(fragmentManager, lifecycle) {
 
@@ -17,7 +18,7 @@ class UserViewPagerAdapter(fragmentManager : FragmentManager, lifecycle: Lifecyc
         var fragment = Fragment()
         when(position){
             0 -> fragment = DetailuserFragment()
-            1 -> fragment = BookinghistoryFragment()
+            1 -> fragment = HistoryFragment()
         }
         return fragment
     }

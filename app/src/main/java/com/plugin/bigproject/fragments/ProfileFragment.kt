@@ -84,11 +84,11 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
     private fun editProfiles(profile: Profile){
      binding.icEdit.setOnClickListener {
          startActivity(Intent(activity, EditProfilesActivity::class.java).apply {
-             putExtra("Name", profile.nama_user)
-             putExtra("Username", profile.username)
-             putExtra("Email", profile.email)
-             putExtra("NoHp",  profile.no_hp)
-             putExtra("Gender", profile.gender)
+//             putExtra("Name", profile.nama_user)
+//             putExtra("Username", profile.username)
+//             putExtra("Email", profile.email)
+//             putExtra("NoHp",  profile.no_hp)
+//             putExtra("Gender", profile.gender)
          })
      }
     }

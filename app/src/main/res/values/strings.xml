@@ -74,6 +74,8 @@
     <string name="Antre">1</string>
     <string name="status">Waiting</string>
     <string name="You">You</string>
-    <string name="date">1 June</string>
+    <string name="date">1 June 2023</string>
     <string name="Articles">Articles</string>
+    <string name="history">History</string>
+    <string name="result">Oblong</string>
 </resources>
