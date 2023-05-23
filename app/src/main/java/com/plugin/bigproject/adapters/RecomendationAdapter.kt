@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.plugin.bigproject.databinding.ListRecomendationBinding
 import com.plugin.bigproject.models.Recomendation
 
-class RecomendationAdapter(private var recomendations : List<Recomendation>) : RecyclerView.Adapter<RecomendationAdapter.RecomenViewHolder>() {
+class RecomendationAdapter(private var recomendations : List<Recomendation>, private val listener: RecomendationListener) : RecyclerView.Adapter<RecomendationAdapter.RecomenViewHolder>() {
 
     inner class RecomenViewHolder(val binding : ListRecomendationBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,11 +20,19 @@ class RecomendationAdapter(private var recomendations : List<Recomendation>) : R
             Glide.with(holder.itemView)
                 .load(recomendations[position].image)
                 .into(ImgHaircuts)
-            TvHaircuts.text = recomendations[position].bentuk
+            TvHaircuts.text = recomendations[position].name_model
         }
+        holder.itemView.setOnClickListener{
+            listener.onRecomendationClick(recomendations[position])
+        }
+
     }
 
     override fun getItemCount(): Int {
         return recomendations.size
     }
+}
+
+interface RecomendationListener{
+    fun onRecomendationClick(recomendation: Recomendation)
 }

@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.plugin.bigproject.databinding.ListTrendingBinding
 import com.plugin.bigproject.models.HairCuts
+import com.plugin.bigproject.models.News
 
-class HaircutsAdapter(private var listHaircut : List<HairCuts>)
+class HaircutsAdapter(private var listHaircut : List<HairCuts>, private val listener : HaircutListener)
     :RecyclerView.Adapter<HaircutsAdapter.HaircutsViewholder>()
 {
         inner class HaircutsViewholder(val binding: ListTrendingBinding) : RecyclerView.ViewHolder(binding.root)
@@ -23,10 +24,18 @@ class HaircutsAdapter(private var listHaircut : List<HairCuts>)
                 .into(Thumbnail)
             HaircutName.text = listHaircut[position].nama_model
         }
+
+        holder.itemView.setOnClickListener{
+            listener.onHaicutClick(listHaircut[position])
+        }
     }
 
     override fun getItemCount(): Int {
         return listHaircut.size
     }
+}
+
+interface HaircutListener{
+    fun onHaicutClick(hairCuts: HairCuts)
 }
 

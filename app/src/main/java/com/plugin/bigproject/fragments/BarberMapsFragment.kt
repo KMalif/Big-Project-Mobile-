@@ -35,6 +35,7 @@ class BarberMapsFragment : Fragment() {
             it.setStyle(Style.TRAFFIC_DAY)
 
             val location = LatLng(-6.868707,109.106704)
+            val barber = LatLng(-6.8739701,109.0930062)
             val position = CameraPosition.Builder()
                 .target(LatLng(-6.868707,109.106704))
                 .zoom(12.0)
@@ -44,6 +45,8 @@ class BarberMapsFragment : Fragment() {
 
             it.animateCamera(CameraUpdateFactory.newCameraPosition(position), 3000)
             it.addMarker(MarkerOptions().setPosition(location).title("You"))
+            it.addMarker(MarkerOptions().setPosition(barber).title("BarberShop"))
+
         }
     }
 

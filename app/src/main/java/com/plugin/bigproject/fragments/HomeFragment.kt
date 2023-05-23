@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.plugin.bigproject.activities.ChatbotActivity
 import com.plugin.bigproject.activities.DetailPartnerActivity
+import com.plugin.bigproject.activities.DetailTrendingActivity
+import com.plugin.bigproject.adapters.HaircutListener
 import com.plugin.bigproject.adapters.HaircutsAdapter
 import com.plugin.bigproject.adapters.PartnersAdapter
 import com.plugin.bigproject.adapters.PartnersListener
@@ -20,6 +22,7 @@ import com.plugin.bigproject.models.HairCuts
 import com.plugin.bigproject.models.Partners
 import com.plugin.bigproject.presenters.FragmentHomePresenter
 import com.plugin.bigproject.util.Constants
+import java.io.Serializable
 
 
 class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
@@ -54,9 +57,15 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
 
     override fun attachHaircutToRecycler(haircuts: List<HairCuts>) {
         binding.RvHaircuts.apply{
-            haircutsAdapter = HaircutsAdapter(haircuts)
-            val mLayout = LinearLayoutManager(activity)
-            mLayout.orientation = LinearLayoutManager.HORIZONTAL
+            haircutsAdapter = HaircutsAdapter(haircuts, object : HaircutListener{
+                override fun onHaicutClick(hairCuts: HairCuts) {
+                    startActivity(Intent(activity, DetailTrendingActivity::class.java).apply {
+                        putExtra("haircut", hairCuts as Serializable)
+                    })
+                }
+            })
+            val mLayout = GridLayoutManager(activity, 2)
+            mLayout.orientation = LinearLayoutManager.VERTICAL
             adapter = haircutsAdapter
             layoutManager = mLayout
         }
@@ -85,15 +94,16 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
 
     override fun showLoading() {
         binding.shimmerBarber.startShimmer()
-        binding.shimmerHaricuts.startShimmer()
+//        binding.shimmerHaricuts.startShimmer()
     }
 
     override fun hideLoading() {
-        binding.shimmerHaricuts.apply {
-            hideShimmer()
-
-        }
+//        binding.shimmerHaricuts.apply {
+//            stopShimmer()
+//            hideShimmer()
+//        }
         binding.shimmerBarber.apply {
+            stopShimmer()
             hideShimmer()
 
         }

@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/icNews"
-        android:title="@string/News"
+        android:title="@string/Articles"
         android:icon="@drawable/ic_news"
         />
 

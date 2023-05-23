@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/tvHeader"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -52,6 +52,7 @@
                     android:text="@string/pleaseLogin"
                     android:textColor="@color/black"
                     android:textSize="20sp"
+                    android:fontFamily="@font/poppins_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,6 +72,7 @@
                     android:inputType="textEmailAddress"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
+                    android:fontFamily="@font/poppins_medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvLetLogin" />
@@ -89,6 +91,7 @@
                     android:ems="10"
                     android:hint="@string/Password"
                     android:inputType="textPassword"
+                    android:fontFamily="@font/poppins_medium"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +117,7 @@
                     android:layout_marginEnd="16dp"
                     android:text="@string/createAccount"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etPassword" />
 
@@ -127,6 +131,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_card"
                     android:text="@string/login"
+                    android:fontFamily="@font/poppins_medium"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

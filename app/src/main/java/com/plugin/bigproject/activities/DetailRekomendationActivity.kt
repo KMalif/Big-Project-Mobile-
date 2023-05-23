@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import com.bumptech.glide.Glide
-import com.plugin.bigproject.databinding.ActivityDetailTrendingBinding
-import com.plugin.bigproject.models.HairCuts
+import com.plugin.bigproject.databinding.ActivityDetailRekomendationBinding
+import com.plugin.bigproject.models.Recomendation
 
-class DetailTrendingActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityDetailTrendingBinding
+class DetailRekomendationActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailRekomendationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailTrendingBinding.inflate(layoutInflater)
+        binding = ActivityDetailRekomendationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
         iconBackClicked()
-        getDetailHaircut()
+        getDetailContent()
     }
+
     private fun iconBackClicked(){
         binding.btnBack.setOnClickListener {
             finish()
@@ -32,20 +32,19 @@ class DetailTrendingActivity : AppCompatActivity() {
         }
     }
 
-    private fun getDetailHaircut(){
-        val bundle : Bundle? = intent.extras
+    private fun getDetailContent(){
+        val bundle: Bundle? = intent.extras
         bundle.apply {
-            val haircuts = this?.getSerializable("haircut") as HairCuts?
-            if (haircuts != null){
-                binding.TitleDetail.text = haircuts.nama_model
-                htmlParser(haircuts.content!!)
-                Glide.with(this@DetailTrendingActivity)
-                    .load(haircuts.image)
+            val recomendation  = this?.getSerializable("recomendation") as Recomendation?
+            if(recomendation != null){
+                binding.TitleDetail.text = recomendation.name_model
+                htmlParser(recomendation.content!!)
+                Glide.with(this@DetailRekomendationActivity)
+                    .load(recomendation.image)
                     .into(binding.ImageDetail)
+
 
             }
         }
     }
-
-
 }

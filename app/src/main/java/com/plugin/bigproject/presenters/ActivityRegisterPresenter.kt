@@ -40,7 +40,6 @@ class ActivityRegisterPresenter (v : RegisterActivityContract.RegisterActivityVi
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
                 view?.showToast("Can't connect to server")
                 view?.hideLoading()
-                println("Gaagal")
             }
         })
     }

@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit
 class APIClient {
     companion object{
         private var retrofit: Retrofit? = null
-        private var okHttpClient = OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS).writeTimeout(30, TimeUnit.SECONDS).build()
+        private var okHttpClient = OkHttpClient.Builder().connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS).writeTimeout(120, TimeUnit.SECONDS).build()
 
         fun APIService():APIServices = getClient().create(APIServices::class.java)
 
@@ -31,7 +31,8 @@ class APIClient {
 
 class Constants{
     companion object{
-        const val API_ENDPOINT = "https://hair-cutz-backend.herokuapp.com/"
+        const val API_ENDPOINT = "http://192.168.43.246:5000/"
+//        const val API_ENDPOINT = "http://192.168.41.95:5000/"
             //"https://haircutzcom-622f1098a38b.cloudora-app.com:8000/"
 
         //http://45.80.181.24:8080/

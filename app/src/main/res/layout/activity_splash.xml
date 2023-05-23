@@ -23,6 +23,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/Appname"
         android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
         />
 
 </LinearLayout>

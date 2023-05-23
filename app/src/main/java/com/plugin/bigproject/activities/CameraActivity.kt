@@ -1,5 +1,6 @@
 package com.plugin.bigproject.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.plugin.bigproject.R
 import com.plugin.bigproject.adapters.RecomendationAdapter
+import com.plugin.bigproject.adapters.RecomendationListener
 import com.plugin.bigproject.contracts.CameraActivityContract
 import com.plugin.bigproject.databinding.ActivityCameraBinding
 import com.plugin.bigproject.models.Recomendation
@@ -24,6 +26,7 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.io.Serializable
 
 class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
@@ -138,7 +141,13 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         hideInput()
         showRecomendation()
         binding.RVRecomendation.apply {
-            recomendationAdapter = RecomendationAdapter(recomendations)
+            recomendationAdapter = RecomendationAdapter(recomendations, object : RecomendationListener{
+                override fun onRecomendationClick(recomendation: Recomendation) {
+                    startActivity(Intent(this@CameraActivity, DetailRekomendationActivity::class.java).apply {
+                        putExtra("recomendation", recomendation as Serializable)
+                    })
+                }
+            })
             val mlayoutManager = GridLayoutManager(this@CameraActivity, 2)
             mlayoutManager.orientation = LinearLayoutManager.VERTICAL
             layoutManager = mlayoutManager

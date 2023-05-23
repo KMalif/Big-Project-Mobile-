@@ -31,6 +31,7 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         _binding = FragmentProfileBinding.inflate(inflater,container, false)
         presenter = FragmentProfilePresenter(this)
         btnLogout()
+        detail()
         return binding.root
     }
 
@@ -78,6 +79,11 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
                 putExtra("NoHp",  profile.no_hp)
                 putExtra("Gender", profile.gender)
             })
+        }
+    }
+    private fun detail(){
+        binding.BtnDetail.setOnClickListener {
+            startActivity(Intent(activity, DetailProfileActivity::class.java))
         }
     }
 

@@ -17,7 +17,20 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BigProject">
+        android:theme="@style/Theme.BigProject"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".DetailRekomendationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+
         <activity
             android:name=".activities.MapActivity"
             android:exported="true" />

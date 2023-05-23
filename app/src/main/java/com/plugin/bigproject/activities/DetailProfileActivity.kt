@@ -37,7 +37,7 @@ class DetailProfileActivity : AppCompatActivity() {
             TabLayoutMediator(Tab, ViewPager){ tab, position ->
                 when(position){
                     0 -> tab.text = "Profile"
-                    1 -> tab.text = "History"
+                    1 -> tab.text = "Wishlist"
                 }
 
             }.attach()

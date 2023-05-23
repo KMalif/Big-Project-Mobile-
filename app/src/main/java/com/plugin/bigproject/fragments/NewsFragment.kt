@@ -56,12 +56,18 @@ class NewsFragment : Fragment(), FragmentNewsContract.View {
     }
 
     override fun showLoading() {
-        binding.shimmerNews.startShimmer()
+        binding.shimmerNews.apply{
+            visibility = View.VISIBLE
+            showShimmer(true)
+            startShimmer()
+        }
     }
 
     override fun hideLoading() {
         binding.shimmerNews.apply {
+            stopShimmer()
             hideShimmer()
+            visibility = View.GONE
         }
     }
 
