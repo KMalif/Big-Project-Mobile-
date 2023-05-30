@@ -45,6 +45,7 @@
     <string name="address">Address</string>
     <string name="crewCount">10</string>
     <string name="upload">Upload</string>
+    <string name="prediksi">Prediksi</string>
     <string name="logout">Logout</string>
     <string name="Message">Message</string>
     <string name="Chat">Chat</string>
@@ -61,11 +62,11 @@
     </string-array>
     <string name="ChooseImage">Choose Image</string>
     <string name="Shape">Square</string>
-    <string name="Recomendations">Recomendations</string>
+    <string name="Recomendations">Recomendasi</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzcDNnOTIxb3EybnFvOXQzeDM4dXMifQ.lPt699H_sWCQeyJamXrD5A</string>
     <string name="Blank">" "</string>
     <string name="chatMessage">This is a sample message that will appear</string>
-    <string name="haircut">Haircuts</string>
+    <string name="haircut">Model Rambut</string>
     <string name="Detail">Detail</string>
     <string name="Gender">Gender</string>
     <string name="NoHp">Phone Number</string>
@@ -75,8 +76,14 @@
     <string name="status">Waiting</string>
     <string name="You">You</string>
     <string name="date">1 June 2023</string>
-    <string name="Articles">Articles</string>
+    <string name="Articles">Artikel</string>
     <string name="history">History</string>
     <string name="result">Oblong</string>
-    <string name="addwishlist">Add to wishlist</string>
+    <string name="addwishlist">Tambah wishlist</string>
+    <string name="emptyWhistlist">Belum ada wishlist</string>
+    <string name="pilih">pilih</string>
+    <string name="panjangRambut">Panjang rambut</string>
+    <string name="removewishlist">Remove Item</string>
+    <string name="emptyArticle">Belum ada artikel</string>
+    <string name="DetailProfile">Detail Profile</string>
 </resources>

@@ -22,9 +22,13 @@ class FragmentHistoryPresenter(v : FragmentHistoryContract.View?): FragmentHisto
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        view?.hideLoading()
-                        view?.attachHistoryToRecycler(body.data)
-//                        view?.showToast("Success get News")
+                     if (body.data.isEmpty()){
+                        view?.showEmpty()
+                     }else{
+                         view?.hideEmpty()
+                         view?.hideLoading()
+                         view?.attachHistoryToRecycler(body.data)
+                     }
                     }else{
                         view?.showToast("Data is empty")
                         view?.hideLoading()

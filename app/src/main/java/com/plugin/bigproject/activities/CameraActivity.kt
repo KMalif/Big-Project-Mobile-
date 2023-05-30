@@ -50,14 +50,14 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
     override fun onResume() {
         super.onResume()
-        setUpDropdown()
+//        setUpDropdown()
     }
 
-    private fun setUpDropdown(){
-        val hairs = resources.getStringArray(R.array.hair)
-        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, hairs)
-        binding.EtHair.setAdapter(arrayAdapter)
-    }
+//    private fun setUpDropdown(){
+//        val hairs = resources.getStringArray(R.array.hair)
+//        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, hairs)
+//        binding.EtHair.setAdapter(arrayAdapter)
+//    }
 
     private fun btnUploadListener(){
         binding.BtnUpload.setOnClickListener {
@@ -78,7 +78,7 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
     }
 
     private val imagePickerLauncher = registerImagePicker {
-        choosedImage = if(it.size == 0)  null else it[0]
+        choosedImage = if(it.isEmpty())  null else it[0]
         showImage()
     }
 
@@ -103,18 +103,21 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
     private fun uploadImage(){
         if(choosedImage != null){
             val originalFile = File(choosedImage?.path!!)
-
             val imagePart : RequestBody = originalFile.asRequestBody("image/*".toMediaTypeOrNull())
-
             image = MultipartBody.Part.createFormData("files", originalFile.name, imagePart)
-
         }
-        val hair = binding.EtHair.text.toString().toRequestBody(MultipartBody.FORM)
+        val pendek = "pendek"
+        val hair = pendek.toRequestBody(MultipartBody.FORM)
         val gender = Constants.getGender(this).toRequestBody(MultipartBody.FORM)
         val token = Constants.getToken(this)
-
-        println("hair $hair gender $gender token $token")
-        presenter?.prediction(token,image!!, hair,gender)
+        if(image == null ){
+            showToast("Pilih gambar terlebih dahulu")
+        }else{
+            presenter?.prediction(token,image!!, hair,gender)
+            binding.BtnUpload.apply {
+                visibility = View.GONE
+            }
+        }
     }
 
     override fun showToast(message: String) {
@@ -168,8 +171,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
     private fun hideInput(){
         binding.apply {
             BtnChooseImage.visibility = View.GONE
-            EtHair.visibility = View.GONE
-            InputLayout.visibility = View.GONE
             BtnUpload.visibility = View.GONE
             BtnCamera.visibility = View.GONE
         }

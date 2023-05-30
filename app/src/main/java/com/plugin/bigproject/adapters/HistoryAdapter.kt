@@ -1,5 +1,7 @@
 package com.plugin.bigproject.adapters
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.plugin.bigproject.databinding.ListHistoryBinding
 import com.plugin.bigproject.models.History
 
-class HistoryAdapter(private var listHistory : List<History>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+class HistoryAdapter(private var listHistory : List<History>, private val listener: WishlistListener) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(val binding : ListHistoryBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,13 +22,23 @@ class HistoryAdapter(private var listHistory : List<History>) : RecyclerView.Ada
             Glide.with(holder.itemView)
                 .load(listHistory[position].image)
                 .into(Thumbnail)
-            tvResult.text = listHistory[position].nama_hasil
             TvHaircutsName.text = listHistory[position].nama_model
-            TvDate.text = listHistory[position].date.toString()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                TvContent.text = Html.fromHtml(listHistory[position].content, Html.FROM_HTML_MODE_COMPACT)
+            }else{
+                TvContent.text = Html.fromHtml(listHistory[position].content)
+            }
+        }
+        holder.itemView.setOnClickListener {
+            listener.onWishlistCLick(listHistory[position])
         }
     }
 
     override fun getItemCount(): Int {
         return listHistory.size
     }
+}
+
+interface WishlistListener{
+    fun onWishlistCLick(wishlist: History)
 }

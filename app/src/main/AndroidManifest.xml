@@ -20,7 +20,14 @@
         android:theme="@style/Theme.BigProject"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".DetailRekomendationActivity"
+            android:name=".activities.DetailWishlistActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.DetailRekomendationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

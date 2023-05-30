@@ -8,6 +8,8 @@ interface FragmentHistoryContract {
         fun attachHistoryToRecycler(listHistory : List<History>)
         fun showLoading()
         fun hideLoading()
+        fun showEmpty()
+        fun hideEmpty()
         fun showToast(message: String)
     }
 

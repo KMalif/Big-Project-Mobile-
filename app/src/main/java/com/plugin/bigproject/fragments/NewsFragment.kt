@@ -40,7 +40,6 @@ class NewsFragment : Fragment(), FragmentNewsContract.View {
     }
 
     override fun attachNewsToRecycler(listNews: List<News>) {
-        println("News $listNews")
         binding.RVNews.apply {
             newsAdapter = NewsAdapter(listNews, object : NewsListener{
                 override fun onNewsClick(news: News) {
@@ -67,6 +66,18 @@ class NewsFragment : Fragment(), FragmentNewsContract.View {
         binding.shimmerNews.apply {
             stopShimmer()
             hideShimmer()
+            visibility = View.GONE
+        }
+    }
+
+    override fun showEmpty() {
+        binding.WrapEmpty.apply {
+            visibility = View.VISIBLE
+        }
+    }
+
+    override fun hideEmpty() {
+        binding.WrapEmpty.apply {
             visibility = View.GONE
         }
     }

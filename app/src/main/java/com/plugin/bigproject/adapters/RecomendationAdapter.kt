@@ -20,7 +20,7 @@ class RecomendationAdapter(private var recomendations : List<Recomendation>, pri
             Glide.with(holder.itemView)
                 .load(recomendations[position].image)
                 .into(ImgHaircuts)
-            TvHaircuts.text = recomendations[position].name_model
+            TvHaircuts.text = recomendations[position].nama_model
         }
         holder.itemView.setOnClickListener{
             listener.onRecomendationClick(recomendations[position])

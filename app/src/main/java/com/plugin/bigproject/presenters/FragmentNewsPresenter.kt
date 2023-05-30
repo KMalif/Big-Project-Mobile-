@@ -22,9 +22,15 @@ class FragmentNewsPresenter (v : FragmentNewsContract.View?): FragmentNewsContra
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        view?.hideLoading()
-                        view?.attachNewsToRecycler(body.data)
+                        if (body.data.isEmpty()){
+                            view?.showEmpty()
+                        }else{
+                            view?.hideEmpty()
+                            view?.hideLoading()
+                            view?.attachNewsToRecycler(body.data)
 //                        view?.showToast("Success get News")
+                        }
+
                     }else{
                         view?.showToast("Data is empty")
                         view?.hideLoading()

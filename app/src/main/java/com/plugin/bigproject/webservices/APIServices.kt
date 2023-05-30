@@ -135,11 +135,15 @@ interface APIServices {
 
     ):Call<WrappedListResponse<Antre>>
 
-
     //get history
-    @GET("history")
+    @GET("whistlist")
     fun getHistory(
         @Header("Authorization") api_token: String
     ):Call<WrappedListResponse<History>>
 
+    @POST("whistlist")
+    fun addWishlist(
+        @Header("Authorization") api_token: String,
+        @Body requestBody : RequestBody
+    ):Call<WrappedResponse<History>>
 }

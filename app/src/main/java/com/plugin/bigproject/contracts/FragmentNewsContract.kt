@@ -7,6 +7,8 @@ interface FragmentNewsContract {
         fun attachNewsToRecycler(listNews : List<News>)
         fun showLoading()
         fun hideLoading()
+        fun showEmpty()
+        fun hideEmpty()
         fun showToast(message: String)
     }
 

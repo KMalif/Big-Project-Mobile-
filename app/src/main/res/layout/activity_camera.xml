@@ -82,32 +82,7 @@
             app:layout_constraintStart_toEndOf="@id/BtnChooseImage"
             app:layout_constraintTop_toBottomOf="@id/cardImg" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/InputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/YourHair"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtnChooseImage">
 
-
-            <AutoCompleteTextView
-                android:id="@+id/EtHair"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:inputType="none"
-                android:text="@string/Longorshort"
-                android:fontFamily="@font/poppins_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
             android:id="@+id/loadingUpload"
@@ -119,7 +94,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/InputLayout" />
+            app:layout_constraintTop_toBottomOf="@id/BtnChooseImage" />
 
         <Button
             android:id="@+id/BtnUpload"
@@ -129,7 +104,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/upload"
+            android:text="@string/prediksi"
             android:textAllCaps="false"
             android:fontFamily="@font/poppins_medium"
             app:layout_constraintEnd_toEndOf="parent"

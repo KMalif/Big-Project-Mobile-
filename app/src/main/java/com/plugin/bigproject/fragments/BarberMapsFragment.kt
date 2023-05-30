@@ -1,15 +1,21 @@
 package com.plugin.bigproject.fragments
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.FragmentBarberMapsBinding
@@ -35,7 +41,7 @@ class BarberMapsFragment : Fragment() {
             it.setStyle(Style.TRAFFIC_DAY)
 
             val location = LatLng(-6.868707,109.106704)
-            val barber = LatLng(-6.8739701,109.0930062)
+            val barber = LatLng(-6.8777395,109.1141334)
             val position = CameraPosition.Builder()
                 .target(LatLng(-6.868707,109.106704))
                 .zoom(12.0)
@@ -45,11 +51,22 @@ class BarberMapsFragment : Fragment() {
 
             it.animateCamera(CameraUpdateFactory.newCameraPosition(position), 3000)
             it.addMarker(MarkerOptions().setPosition(location).title("You"))
-            it.addMarker(MarkerOptions().setPosition(barber).title("BarberShop"))
-
+            it.addMarker(MarkerOptions().setPosition(barber).title("Jodi's Barbershop"))
+            it.setOnMarkerClickListener(object : MapboxMap.OnMarkerClickListener{
+                override fun onMarkerClick(marker: Marker): Boolean {
+                    val location: Uri = Uri.parse("google.navigation:q=-6.8777395,109.1141334&mode=d")
+                    val mapIntent = Intent(Intent.ACTION_VIEW, location)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+                    try {
+                        startActivity(mapIntent)
+                    } catch (e: ActivityNotFoundException) {
+                        println(e.message)
+                    }
+                    return true
+                }
+            })
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
