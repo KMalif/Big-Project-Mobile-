@@ -1,14 +1,9 @@
-package com.plugin.bigproject.fragments
+package com.plugin.bigproject.activities
 
 import android.Manifest
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.mapbox.android.core.location.LocationEngine
@@ -27,38 +22,33 @@ import com.mapbox.search.result.SearchResultType
 import com.mapbox.search.ui.view.CommonSearchViewConfiguration
 import com.mapbox.search.ui.view.DistanceUnitType
 import com.mapbox.search.ui.view.place.SearchPlace
+import com.mapbox.search.ui.view.place.SearchPlaceBottomSheetView
 import com.plugin.bigproject.R
-import com.plugin.bigproject.databinding.FragmentBarberMapsBinding
+import com.plugin.bigproject.databinding.ActivityDiscoverBinding
 import com.plugin.bigproject.util.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class BarberMapsFragment : Fragment() {
+class DiscoverActivity : AppCompatActivity() {
 
     private lateinit var discover: Discover
     private lateinit var locationEngine: LocationEngine
+
+    private lateinit var mapView: MapView
     private lateinit var mapboxMap: MapboxMap
     private lateinit var mapMarkersManager: MapMarkersManager
 
+    private lateinit var searchPlaceView: SearchPlaceBottomSheetView
 
-    private var _binding: FragmentBarberMapsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityDiscoverBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentBarberMapsBinding.inflate(inflater, container, false)
-        setupMap()
-        return binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDiscoverBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    }
-
-    private fun setupMap(){
         discover = Discover.create(getString(R.string.mapbox_access_token))
-        locationEngine = LocationEngineProvider.getBestLocationEngine(requireActivity())
-
+        locationEngine = LocationEngineProvider.getBestLocationEngine(applicationContext)
 
         mapMarkersManager = MapMarkersManager(binding.mapView)
         binding.mapView.getMapboxMap().also { mapboxMap ->
@@ -87,7 +77,7 @@ class BarberMapsFragment : Fragment() {
 
 
         binding.searchNearby.setOnClickListener {
-            locationEngine.lastKnownLocation(requireActivity()) { location ->
+            locationEngine.lastKnownLocation(this) { location ->
                 if (location == null) {
                     return@lastKnownLocation
                 }
@@ -96,7 +86,7 @@ class BarberMapsFragment : Fragment() {
                     val response = discover.search(
                         query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
                         proximity = location,
-                        options = DiscoverOptions(limit = 10)
+                        options = DiscoverOptions(limit = 20)
                     )
 
                     response.onValue { results ->
@@ -108,41 +98,43 @@ class BarberMapsFragment : Fragment() {
             }
         }
 
-//        binding.searchThisArea.setOnClickListener {
-//            lifecycleScope.launchWhenStarted {
-//                val response = discover.search(
-//                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
-//                    region = mapboxMap.getCameraBoundingBox(),
-//                    options = DiscoverOptions(limit = 20)
-//                )
-//
-//                response.onValue { results ->
-//                    mapMarkersManager.showResults(results)
-//                }.onError { e ->
-//                    Log.d("DiscoverApiExample", "Error happened during search request", e)
-//                }
-//            }
-//        }
+
+        binding.searchThisArea.setOnClickListener {
+            lifecycleScope.launchWhenStarted {
+                val response = discover.search(
+                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
+                    region = mapboxMap.getCameraBoundingBox(),
+                    options = DiscoverOptions(limit = 20)
+                )
+
+                response.onValue { results ->
+                    mapMarkersManager.showResults(results)
+                }.onError { e ->
+                    Log.d("DiscoverApiExample", "Error happened during search request", e)
+                }
+            }
+        }
+
         binding.searchPlaceView.apply {
             initialize(CommonSearchViewConfiguration(DistanceUnitType.IMPERIAL))
             isFavoriteButtonVisible = false
             addOnCloseClickListener {
                 mapMarkersManager.adjustMarkersForClosedCard()
-                hide()
+                binding.searchPlaceView.hide()
             }
         }
 
-        mapMarkersManager.onResultClickListener = { result ->
+        mapMarkersManager.onResultClickListener = {
             mapMarkersManager.adjustMarkersForOpenCard()
-            binding.searchPlaceView.open(result.toSearchPlace())
-            locationEngine.userDistanceTo(requireActivity(), result.coordinate) { distance ->
-                distance?.let { binding.searchPlaceView.updateDistance(distance) }
+            searchPlaceView.open(it.toSearchPlace())
+            locationEngine.userDistanceTo(this@DiscoverActivity, it.coordinate) { distance ->
+                distance?.let { searchPlaceView.updateDistance(distance) }
             }
         }
 
-        if (!requireContext().isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (!isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(
-                requireActivity(),
+                this,
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
@@ -264,5 +256,4 @@ class BarberMapsFragment : Fragment() {
             )
         }
     }
-
 }

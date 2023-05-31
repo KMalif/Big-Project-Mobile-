@@ -86,4 +86,5 @@
     <string name="removewishlist">Remove Item</string>
     <string name="emptyArticle">Belum ada artikel</string>
     <string name="DetailProfile">Detail Profile</string>
+    <string name="caribarbershop">Cari barbershop terdekat</string>
 </resources>

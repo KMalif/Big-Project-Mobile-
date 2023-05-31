@@ -146,4 +146,10 @@ interface APIServices {
         @Header("Authorization") api_token: String,
         @Body requestBody : RequestBody
     ):Call<WrappedResponse<History>>
+
+    @DELETE("whistlist/{id}")
+    fun deleteWishlist(
+        @Path("id") id : Int,
+        @Header("Authorization") api_token: String
+    ):Call<WrappedResponse<History>>
 }
