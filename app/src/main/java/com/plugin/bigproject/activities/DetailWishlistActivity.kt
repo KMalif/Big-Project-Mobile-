@@ -1,5 +1,6 @@
 package com.plugin.bigproject.activities
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,10 +35,12 @@ class DetailWishlistActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getDetailContent(){
         val bundle: Bundle? = intent.extras
         val wishlist  = bundle?.getSerializable("wishlist") as History?
         if(wishlist != null){
+            binding.ContentDate.text = "Ditambahkan pada ${wishlist.date}"
             binding.TitleDetail.text = wishlist.nama_model
             htmlParser(wishlist.content!!)
             Glide.with(this)

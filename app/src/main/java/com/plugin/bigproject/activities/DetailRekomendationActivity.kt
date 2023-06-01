@@ -61,14 +61,16 @@ class DetailRekomendationActivity : AppCompatActivity(), DetailRecomendationCont
         if(recomendation != null){
         val token = Constants.getToken(this)
         val jsonObject = JSONObject()
-        jsonObject.put("image", recomendation.image)
-        jsonObject.put("nama_model", recomendation.nama_model)
-        jsonObject.put("content", recomendation.content)
+            jsonObject.put("image", recomendation.image)
+            jsonObject.put("nama_model", recomendation.nama_model)
+            jsonObject.put("content", recomendation.content)
+
         val jsonObjectString = jsonObject.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
 
             binding.BtnWishlist.setOnClickListener {
                 presenter.addWishlist(token, requestBody)
+                println("Image ${recomendation.image}")
             }
         }
     }

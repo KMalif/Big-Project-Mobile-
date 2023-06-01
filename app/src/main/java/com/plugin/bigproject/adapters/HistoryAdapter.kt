@@ -23,6 +23,7 @@ class HistoryAdapter(private var listHistory : List<History>, private val listen
             Glide.with(holder.itemView)
                 .load(listHistory[position].image)
                 .into(Thumbnail)
+            TvDate.text = listHistory[position].date
             TvHaircutsName.text = listHistory[position].nama_model
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
                 TvContent.text = Html.fromHtml(listHistory[position].content, Html.FROM_HTML_MODE_COMPACT)

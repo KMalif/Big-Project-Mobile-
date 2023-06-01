@@ -66,40 +66,42 @@
             android:text="@string/haircutName" />
 
         <TextView
+            android:id="@+id/ContentDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:justificationMode="inter_word"
+            android:text="@string/date"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="18sp"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TitleDetail"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
             android:id="@+id/ContentDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:justificationMode="inter_word"
             android:text="@string/Placeholder"
             android:fontFamily="@font/poppins_medium"
             android:textSize="18sp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/BtnWishlist"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TitleDetail" />
+            app:layout_constraintTop_toBottomOf="@id/ContentDate"
+            android:layout_marginBottom="16dp"/>
 
 
-                <Button
-                    android:id="@+id/BtnWishlist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/removewishlist"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textAllCaps="false"
-                    app:layout_constraintTop_toBottomOf="@id/ContentDetail"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

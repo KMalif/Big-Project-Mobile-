@@ -15,7 +15,7 @@ class DetailRecomendationActivityPresenter(v : DetailRecomendationContract.View?
     private var apiService = APIClient.APIService()
 
     override fun addWishlist(token: String, requestBody: RequestBody) {
-        val request = apiService.addWishlist(token, requestBody)
+        val request = apiService.addWishlist("Bearer $token", requestBody)
         request.enqueue(object : Callback<WrappedResponse<History>>{
             override fun onResponse(
                 call: Call<WrappedResponse<History>>,
