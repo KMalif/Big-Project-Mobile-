@@ -1,8 +1,6 @@
 package com.plugin.bigproject.fragments
 
 import android.Manifest
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.util.Log
@@ -48,7 +46,7 @@ class BarberMapsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBarberMapsBinding.inflate(inflater, container, false)
         setupMap()
         return binding.root
@@ -58,7 +56,6 @@ class BarberMapsFragment : Fragment() {
     private fun setupMap(){
         discover = Discover.create(getString(R.string.mapbox_access_token))
         locationEngine = LocationEngineProvider.getBestLocationEngine(requireActivity())
-
 
         mapMarkersManager = MapMarkersManager(binding.mapView)
         binding.mapView.getMapboxMap().also { mapboxMap ->
@@ -91,16 +88,18 @@ class BarberMapsFragment : Fragment() {
                 if (location == null) {
                     return@lastKnownLocation
                 }
-
+                val query = DiscoverQuery.Category.create("rumah_sakit")
+                val newlocation = Point.fromLngLat(38.92249177571266, -77.02489150281114)
                 lifecycleScope.launchWhenStarted {
                     val response = discover.search(
-                        query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
+                        query = DiscoverQuery.Category.RAILWAY_STATION,
                         proximity = location,
                         options = DiscoverOptions(limit = 10)
                     )
 
                     response.onValue { results ->
                         mapMarkersManager.showResults(results)
+                        println("Result ${results}")
                     }.onError { e ->
                         Log.d("DiscoverApiExample", "Error happened during search request", e)
                     }
@@ -108,21 +107,22 @@ class BarberMapsFragment : Fragment() {
             }
         }
 
-//        binding.searchThisArea.setOnClickListener {
-//            lifecycleScope.launchWhenStarted {
-//                val response = discover.search(
-//                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
-//                    region = mapboxMap.getCameraBoundingBox(),
-//                    options = DiscoverOptions(limit = 20)
-//                )
-//
-//                response.onValue { results ->
-//                    mapMarkersManager.showResults(results)
-//                }.onError { e ->
-//                    Log.d("DiscoverApiExample", "Error happened during search request", e)
-//                }
-//            }
-//        }
+        binding.searchThisArea.setOnClickListener {
+            lifecycleScope.launchWhenStarted {
+                val response = discover.search(
+                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
+                    region = mapboxMap.getCameraBoundingBox(),
+                    options = DiscoverOptions(limit = 20)
+                )
+
+                response.onValue { results ->
+                    mapMarkersManager.showResults(results)
+                    println("Result area ${results}")
+                }.onError { e ->
+                    Log.d("DiscoverApiExample", "Error happened during search request", e)
+                }
+            }
+        }
         binding.searchPlaceView.apply {
             initialize(CommonSearchViewConfiguration(DistanceUnitType.IMPERIAL))
             isFavoriteButtonVisible = false
