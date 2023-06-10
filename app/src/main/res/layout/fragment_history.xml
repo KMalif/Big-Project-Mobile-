@@ -56,14 +56,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +76,6 @@
             <include layout="@layout/list_history_shimmer"/>
             <include layout="@layout/list_history_shimmer"/>
             <include layout="@layout/list_history_shimmer"/>
-            <include layout="@layout/list_history_shimmer"/>
-            <include layout="@layout/list_history_shimmer"/>
-
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>

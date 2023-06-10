@@ -4,15 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerMode
-import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
 import com.esafirm.imagepicker.features.registerImagePicker
-import com.plugin.bigproject.R
 import com.plugin.bigproject.adapters.RecomendationAdapter
 import com.plugin.bigproject.adapters.RecomendationListener
 import com.plugin.bigproject.contracts.CameraActivityContract
@@ -45,19 +42,11 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         btnBackListener()
         btnChooseListener()
         btnUploadListener()
-        cameraLaunch()
     }
 
     override fun onResume() {
         super.onResume()
-//        setUpDropdown()
     }
-
-//    private fun setUpDropdown(){
-//        val hairs = resources.getStringArray(R.array.hair)
-//        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, hairs)
-//        binding.EtHair.setAdapter(arrayAdapter)
-//    }
 
     private fun btnUploadListener(){
         binding.BtnUpload.setOnClickListener {
@@ -89,10 +78,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
         }
         imagePickerLauncher.launch(config)
-    }
-    private fun cameraLaunch(){
-        binding.BtnCamera.setOnClickListener {  imagePickerLauncher.launch(CameraOnlyConfig())}
-
     }
     private fun showImage(){
         choosedImage?.let{
@@ -126,15 +111,12 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
     override fun showLoading() {
         binding.loadingUpload.apply {
-            isIndeterminate = true
             visibility = View.VISIBLE
         }
     }
 
     override fun hideLoading() {
         binding.loadingUpload.apply {
-            isIndeterminate = false
-            progress = 0
             visibility = View.GONE
         }
     }
@@ -172,7 +154,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         binding.apply {
             BtnChooseImage.visibility = View.GONE
             BtnUpload.visibility = View.GONE
-            BtnCamera.visibility = View.GONE
         }
     }
 

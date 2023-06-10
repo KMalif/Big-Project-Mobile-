@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     def lifecycle_ver = "2.2.0-alpha01"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ver"
-
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     //web request
     implementation "com.squareup.retrofit2:retrofit:2.9.0"

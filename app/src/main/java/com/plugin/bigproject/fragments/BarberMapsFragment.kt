@@ -92,7 +92,7 @@ class BarberMapsFragment : Fragment() {
                 val newlocation = Point.fromLngLat(38.92249177571266, -77.02489150281114)
                 lifecycleScope.launchWhenStarted {
                     val response = discover.search(
-                        query = DiscoverQuery.Category.RAILWAY_STATION,
+                        query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
                         proximity = location,
                         options = DiscoverOptions(limit = 10)
                     )
@@ -107,22 +107,22 @@ class BarberMapsFragment : Fragment() {
             }
         }
 
-        binding.searchThisArea.setOnClickListener {
-            lifecycleScope.launchWhenStarted {
-                val response = discover.search(
-                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
-                    region = mapboxMap.getCameraBoundingBox(),
-                    options = DiscoverOptions(limit = 20)
-                )
-
-                response.onValue { results ->
-                    mapMarkersManager.showResults(results)
-                    println("Result area ${results}")
-                }.onError { e ->
-                    Log.d("DiscoverApiExample", "Error happened during search request", e)
-                }
-            }
-        }
+//        binding.searchThisArea.setOnClickListener {
+//            lifecycleScope.launchWhenStarted {
+//                val response = discover.search(
+//                    query = DiscoverQuery.Category.COFFEE_SHOP_CAFE,
+//                    region = mapboxMap.getCameraBoundingBox(),
+//                    options = DiscoverOptions(limit = 20)
+//                )
+//
+//                response.onValue { results ->
+//                    mapMarkersManager.showResults(results)
+//                    println("Result area ${results}")
+//                }.onError { e ->
+//                    Log.d("DiscoverApiExample", "Error happened during search request", e)
+//                }
+//            }
+//        }
         binding.searchPlaceView.apply {
             initialize(CommonSearchViewConfiguration(DistanceUnitType.IMPERIAL))
             isFavoriteButtonVisible = false

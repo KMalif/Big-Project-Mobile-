@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.plugin.bigproject.activities.DetailProfileActivity
-import com.plugin.bigproject.activities.DiscoverActivity
 import com.plugin.bigproject.activities.EditProfilesActivity
 import com.plugin.bigproject.activities.LoginActivity
 import com.plugin.bigproject.contracts.FragmentProfileContract
@@ -33,9 +32,6 @@ class ProfileFragment : Fragment(), FragmentProfileContract.View {
         presenter = FragmentProfilePresenter(this)
         btnLogout()
         detail()
-        binding.Avatar.setOnClickListener{
-            startActivity(Intent(activity, DiscoverActivity::class.java))
-        }
         return binding.root
     }
 

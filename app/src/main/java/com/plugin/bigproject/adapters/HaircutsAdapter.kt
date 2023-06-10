@@ -1,5 +1,7 @@
 package com.plugin.bigproject.adapters
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,11 @@ class HaircutsAdapter(private var listHaircut : List<HairCuts>, private val list
                 .load(listHaircut[position].image)
                 .into(Thumbnail)
             HaircutName.text = listHaircut[position].nama_model
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                HaircutDesc.text = Html.fromHtml(listHaircut[position].content, Html.FROM_HTML_MODE_COMPACT)
+            }else{
+                HaircutDesc.text = Html.fromHtml(listHaircut[position].content)
+            }
         }
 
         holder.itemView.setOnClickListener{

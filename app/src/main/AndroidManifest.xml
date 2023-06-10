@@ -20,13 +20,7 @@
         android:theme="@style/Theme.BigProject"
         android:hardwareAccelerated="false"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".activities.DiscoverActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".activities.DetailWishlistActivity"
             android:exported="false">
@@ -41,10 +35,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
 
         <activity
             android:name=".activities.MapActivity"
