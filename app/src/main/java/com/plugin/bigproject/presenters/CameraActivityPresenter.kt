@@ -26,7 +26,7 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
                     val body = response.body()
                     if (body != null){
                         view?.showToast("Succes Upload")
-                        view?.getRecomendation(body.data, body.shape)
+                        view?.getRecomendation(body.data, body.shape, body.message)
                         view?.hideLoading()
                     }
                     else{

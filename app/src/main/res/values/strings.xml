@@ -88,4 +88,8 @@
     <string name="DetailProfile">Detail Profile &amp; Wishlist</string>
     <string name="caribarbershop">Cari barbershop terdekat</string>
     <string name="mengunggah">Mengunggah gambar</string>
+    <string name="category">Kategori</string>
+    <string name="namaModel">Nama model</string>
+    <string name="Model">Model</string>
+    <string name="deskripsi">Deskripsi</string>
 </resources>

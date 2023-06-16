@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:mapbox_logoGravity="bottom"
         />
-
     <Button
         android:id="@+id/search_nearby"
         android:layout_width="0dp"

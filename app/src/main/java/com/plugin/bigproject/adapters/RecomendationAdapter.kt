@@ -1,5 +1,7 @@
 package com.plugin.bigproject.adapters
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,12 @@ class RecomendationAdapter(private var recomendations : List<Recomendation>, pri
                 .load(recomendations[position].image)
                 .into(ImgHaircuts)
             TvHaircuts.text = recomendations[position].nama_model
+            TvCategory.text = recomendations[position].bentuk
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                TvContent.text = Html.fromHtml(recomendations[position].content, Html.FROM_HTML_MODE_COMPACT)
+            }else{
+                TvContent.text = Html.fromHtml(recomendations[position].content)
+            }
         }
         holder.itemView.setOnClickListener{
             listener.onRecomendationClick(recomendations[position])

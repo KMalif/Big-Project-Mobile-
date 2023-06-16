@@ -37,9 +37,9 @@ class DetailRekomendationActivity : AppCompatActivity(), DetailRecomendationCont
 
     private fun htmlParser(content : String){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            binding.ContentDetail.text = Html.fromHtml("$content", Html.FROM_HTML_MODE_COMPACT)
+            binding.ContentDetail.text = Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT)
         }else{
-            binding.ContentDetail.text = Html.fromHtml("$content")
+            binding.ContentDetail.text = Html.fromHtml(content)
         }
     }
 
@@ -47,7 +47,11 @@ class DetailRekomendationActivity : AppCompatActivity(), DetailRecomendationCont
         val bundle: Bundle? = intent.extras
         val recomendation  = bundle?.getSerializable("recomendation") as Recomendation?
         if(recomendation != null){
-            binding.TitleDetail.text = recomendation.nama_model
+            binding.apply {
+                TitleDetail.text = recomendation.nama_model
+                TVCategory.text = recomendation.bentuk
+                TVGender.text = recomendation.gender
+            }
             htmlParser(recomendation.content!!)
             Glide.with(this@DetailRekomendationActivity)
                 .load(recomendation.image)

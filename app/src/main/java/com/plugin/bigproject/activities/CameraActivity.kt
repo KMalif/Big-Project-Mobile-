@@ -39,13 +39,13 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         setContentView(binding.root)
         supportActionBar?.hide()
         presenter = CameraActivityPresenter(this)
-        btnBackListener()
-        btnChooseListener()
-        btnUploadListener()
     }
 
     override fun onResume() {
         super.onResume()
+        btnBackListener()
+        btnChooseListener()
+        btnUploadListener()
     }
 
     private fun btnUploadListener(){
@@ -121,7 +121,7 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         }
     }
 
-    override fun getRecomendation(recomendations: List<Recomendation>, faceShape : String) {
+    override fun getRecomendation(recomendations: List<Recomendation>, faceShape : String, suggest : String) {
         println("Shape $faceShape Recomendations $recomendations ")
         hideInput()
         showRecomendation()
@@ -139,11 +139,13 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
             adapter = recomendationAdapter
         }
         binding.TvShape.text = faceShape
+        binding.TvSuggest.text = suggest
     }
 
     private fun showRecomendation(){
         binding.apply {
             TvShape.visibility = View.VISIBLE
+            TvSuggest.visibility = View.VISIBLE
             TitleRecomendation.visibility = View.VISIBLE
             RVRecomendation.visibility = View.VISIBLE
         }

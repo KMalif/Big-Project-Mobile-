@@ -133,8 +133,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/loadingUpload" />
 
-
-
         <TextView
             android:id="@+id/TvShape"
             android:layout_width="match_parent"
@@ -153,16 +151,32 @@
             app:layout_constraintTop_toBottomOf="@id/BtnUpload" />
 
         <TextView
+            android:id="@+id/TvSuggest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/Shape"
+            android:textColor="@color/black"
+            android:textSize="@dimen/regular"
+            android:fontFamily="@font/poppins_regular"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TvShape" />
+
+        <TextView
             android:id="@+id/TitleRecomendation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TvShape"
+            app:layout_constraintTop_toBottomOf="@id/TvSuggest"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:textColor="@color/black"
+            android:visibility="gone"
             android:textSize="@dimen/name"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/Recomendations" />
@@ -171,11 +185,11 @@
             android:id="@+id/RVRecomendation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
