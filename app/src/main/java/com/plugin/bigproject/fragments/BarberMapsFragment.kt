@@ -17,6 +17,7 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.maps.plugin.Plugin
 import com.plugin.bigproject.R
 import com.plugin.bigproject.databinding.FragmentBarberMapsBinding
 
@@ -30,7 +31,7 @@ class BarberMapsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Mapbox.getInstance(requireActivity(), getString(R.string.mapbox_access_token))
+        Plugin.Mapbox.getInstance(requireActivity(), getString(R.string.mapbox_access_token))
         _binding = FragmentBarberMapsBinding.inflate(inflater, container, false)
         return binding.root
     }
