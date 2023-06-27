@@ -11,6 +11,7 @@ interface CameraActivityContract {
         fun showLoading()
         fun hideLoading()
         fun getRecomendation(recomendations : List<Recomendation>, faceShape : String, suggest : String)
+        fun showEmpty()
     }
 
     interface Presenter{

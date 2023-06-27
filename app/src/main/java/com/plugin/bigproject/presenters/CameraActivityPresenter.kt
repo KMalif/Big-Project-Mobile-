@@ -28,6 +28,10 @@ class CameraActivityPresenter(v : CameraActivityContract.View?) : CameraActivity
                         view?.showToast("Succes Upload")
                         view?.getRecomendation(body.data, body.shape, body.message)
                         view?.hideLoading()
+                        if (body.data.isEmpty()){
+                            view?.showEmpty()
+                        }
+
                     }
                     else{
                         view?.showToast("Data not Found")

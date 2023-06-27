@@ -64,7 +64,7 @@
             android:textAllCaps="false"
             android:fontFamily="@font/poppins_medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardImg" />
+            app:layout_constraintTop_toBottomOf="@id/TvSuggest" />
 
 <!--        <Button-->
 <!--            android:id="@+id/BtnCamera"-->
@@ -148,7 +148,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtnUpload" />
+            app:layout_constraintTop_toBottomOf="@id/cardImg" />
 
         <TextView
             android:id="@+id/TvSuggest"

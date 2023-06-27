@@ -142,6 +142,15 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         binding.TvSuggest.text = suggest
     }
 
+    override fun showEmpty() {
+        binding.apply {
+            BtnChooseImage.visibility = View.VISIBLE
+            BtnUpload.visibility = View.VISIBLE
+            TitleRecomendation.visibility = View.GONE
+        }
+    }
+
+
     private fun showRecomendation(){
         binding.apply {
             TvShape.visibility = View.VISIBLE
