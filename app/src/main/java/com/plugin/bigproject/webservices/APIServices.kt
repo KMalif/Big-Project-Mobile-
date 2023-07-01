@@ -67,6 +67,12 @@ interface APIServices {
         @Header("Authorization") api_token: String
     ): Call<WrappedListResponse<Partners>>
 
+    //get partners location
+    @GET("mitra")
+    fun getPartnersLocation(
+
+    ): Call<WrappedListResponse<Partners>>
+
     //get Partners
     @GET("mitra/{id}")
     fun getPartnerbyId(

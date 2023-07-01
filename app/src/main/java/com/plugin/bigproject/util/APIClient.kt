@@ -31,7 +31,7 @@ class APIClient {
 
 class Constants{
     companion object{
-        const val API_ENDPOINT = "http://192.168.41.70:5000/"
+        const val API_ENDPOINT = "http://192.168.18.187:5000/"
 //        const val API_ENDPOINT = "http://192.168.41.95:5000/"
 //        https://hair-cutz-backend.herokuapp.com/
         fun getToken(context: Context): String {
