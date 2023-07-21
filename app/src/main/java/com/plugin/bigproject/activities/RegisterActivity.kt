@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity(), RegisterActivityContract.RegisterA
             if(name.isNotEmpty() && userName.isNotEmpty() && gender.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
                 presenter.register(name, userName,gender,noHp, email, password,role)
             }else{
-                showToast("Please input all form")
+                showToast("Silahkan Isi Semua Form")
             }
 
         }

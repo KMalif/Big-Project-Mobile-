@@ -60,7 +60,7 @@
         <item>male</item>
         <item>female</item>
     </string-array>
-    <string name="ChooseImage">Choose Image</string>
+    <string name="ChooseImage">Pilih gambar</string>
     <string name="Shape">Square</string>
     <string name="Recomendations">Recomendasi</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoia21hbGlmIiwiYSI6ImNreDNzcDNnOTIxb3EybnFvOXQzeDM4dXMifQ.lPt699H_sWCQeyJamXrD5A</string>
@@ -85,5 +85,12 @@
     <string name="panjangRambut">Panjang rambut</string>
     <string name="removewishlist">Remove Item</string>
     <string name="emptyArticle">Belum ada artikel</string>
-    <string name="DetailProfile">Detail Profile</string>
+    <string name="DetailProfile">Detail Profile &amp; Wishlist</string>
+    <string name="caribarbershop">Cari barbershop terdekat</string>
+    <string name="mengunggah">Mengunggah gambar</string>
+    <string name="category">Kategori</string>
+    <string name="namaModel">Nama model</string>
+    <string name="Model">Model</string>
+    <string name="deskripsi">Deskripsi</string>
 </resources>
+

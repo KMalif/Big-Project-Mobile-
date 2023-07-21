@@ -1,5 +1,6 @@
 package com.plugin.bigproject.adapters
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ class HistoryAdapter(private var listHistory : List<History>, private val listen
             Glide.with(holder.itemView)
                 .load(listHistory[position].image)
                 .into(Thumbnail)
+            TvDate.text = listHistory[position].date
             TvHaircutsName.text = listHistory[position].nama_model
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
                 TvContent.text = Html.fromHtml(listHistory[position].content, Html.FROM_HTML_MODE_COMPACT)
@@ -32,13 +34,24 @@ class HistoryAdapter(private var listHistory : List<History>, private val listen
         holder.itemView.setOnClickListener {
             listener.onWishlistCLick(listHistory[position])
         }
+        holder.itemView.setOnLongClickListener{
+            listener.deleteWishlist(listHistory[position].id!!)
+            true
+        }
     }
 
     override fun getItemCount(): Int {
         return listHistory.size
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newListHistory: List<History>) {
+        listHistory = newListHistory
+        notifyDataSetChanged()
+    }
 }
 
 interface WishlistListener{
     fun onWishlistCLick(wishlist: History)
+    fun deleteWishlist(id : Int)
 }

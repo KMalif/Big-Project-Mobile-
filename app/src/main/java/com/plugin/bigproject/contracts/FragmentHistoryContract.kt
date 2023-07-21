@@ -11,10 +11,12 @@ interface FragmentHistoryContract {
         fun showEmpty()
         fun hideEmpty()
         fun showToast(message: String)
+        fun onItemDelete(wishlist : History)
     }
 
     interface Presenter{
         fun getHistory(token : String)
+        fun deleteWishlist(token : String, id : Int)
         fun destroy()
     }
 }

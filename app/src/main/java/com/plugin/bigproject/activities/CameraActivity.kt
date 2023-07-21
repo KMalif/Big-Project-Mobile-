@@ -42,22 +42,14 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         setContentView(binding.root)
         supportActionBar?.hide()
         presenter = CameraActivityPresenter(this)
-        btnBackListener()
-        btnChooseListener()
-        btnUploadListener()
-        cameraLaunch()
     }
 
     override fun onResume() {
         super.onResume()
-//        setUpDropdown()
+        btnBackListener()
+        btnChooseListener()
+        btnUploadListener()
     }
-
-//    private fun setUpDropdown(){
-//        val hairs = resources.getStringArray(R.array.hair)
-//        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, hairs)
-//        binding.EtHair.setAdapter(arrayAdapter)
-//    }
 
     private fun btnUploadListener(){
         binding.BtnUpload.setOnClickListener {
@@ -89,10 +81,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
         }
         imagePickerLauncher.launch(config)
-    }
-    private fun cameraLaunch(){
-        binding.BtnCamera.setOnClickListener {  imagePickerLauncher.launch(CameraOnlyConfig())}
-
     }
     private fun showImage(){
         choosedImage?.let{
@@ -126,20 +114,17 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
 
     override fun showLoading() {
         binding.loadingUpload.apply {
-            isIndeterminate = true
             visibility = View.VISIBLE
         }
     }
 
     override fun hideLoading() {
         binding.loadingUpload.apply {
-            isIndeterminate = false
-            progress = 0
             visibility = View.GONE
         }
     }
 
-    override fun getRecomendation(recomendations: List<Recomendation>, faceShape : String) {
+    override fun getRecomendation(recomendations: List<Recomendation>, faceShape : String, suggest : String) {
         println("Shape $faceShape Recomendations $recomendations ")
         hideInput()
         showRecomendation()
@@ -157,11 +142,22 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
             adapter = recomendationAdapter
         }
         binding.TvShape.text = faceShape
+        binding.TvSuggest.text = suggest
     }
+
+    override fun showEmpty() {
+        binding.apply {
+            BtnChooseImage.visibility = View.VISIBLE
+            BtnUpload.visibility = View.VISIBLE
+            TitleRecomendation.visibility = View.GONE
+        }
+    }
+
 
     private fun showRecomendation(){
         binding.apply {
             TvShape.visibility = View.VISIBLE
+            TvSuggest.visibility = View.VISIBLE
             TitleRecomendation.visibility = View.VISIBLE
             RVRecomendation.visibility = View.VISIBLE
         }
@@ -172,7 +168,6 @@ class CameraActivity : AppCompatActivity(), CameraActivityContract.View {
         binding.apply {
             BtnChooseImage.visibility = View.GONE
             BtnUpload.visibility = View.GONE
-            BtnCamera.visibility = View.GONE
         }
     }
 

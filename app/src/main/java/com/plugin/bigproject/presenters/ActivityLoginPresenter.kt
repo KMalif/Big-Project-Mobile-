@@ -40,7 +40,7 @@ class ActivityLoginPresenter(v : LoginActivityContract.LoginActivityView?) : Log
                         view?.showToast("Data is Empty")
                         view?.hideLoading() }
                 }else{
-                    view?.showToast("Username and Password Doesn't match")
+                    view?.showToast("Username dan Password tidak cocok")
                 }
                 view?.hideLoading()
             }

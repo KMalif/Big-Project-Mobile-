@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityContract.LoginActivityVi
             if (userName.isNotEmpty() && password.isNotEmpty()){
                 presenter.login(userName, password,this)
             }else{
-                showToast("Please input all form")
+                showToast("Silahkan Isi Semua form")
             }
 
         }

@@ -67,6 +67,12 @@ interface APIServices {
         @Header("Authorization") api_token: String
     ): Call<WrappedListResponse<Partners>>
 
+    //get partners location
+    @GET("mitraLocation")
+    fun getPartnersLocation(
+
+    ): Call<WrappedListResponse<Partners>>
+
     //get Partners
     @GET("mitra/{id}")
     fun getPartnerbyId(
@@ -145,5 +151,11 @@ interface APIServices {
     fun addWishlist(
         @Header("Authorization") api_token: String,
         @Body requestBody : RequestBody
+    ):Call<WrappedResponse<History>>
+
+    @DELETE("whistlist/{id}")
+    fun deleteWishlist(
+        @Path("id") id : Int,
+        @Header("Authorization") api_token: String
     ):Call<WrappedResponse<History>>
 }

@@ -93,19 +93,18 @@ class HomeFragment : Fragment(), FragmentHomeContract.FragmentHomeView {
     }
 
     override fun showLoading() {
-        binding.shimmerBarber.startShimmer()
-//        binding.shimmerHaricuts.startShimmer()
+        binding.shimmerBarber.apply {
+            visibility = View.VISIBLE
+            showShimmer(true)
+            startShimmer()
+        }
     }
 
     override fun hideLoading() {
-//        binding.shimmerHaricuts.apply {
-//            stopShimmer()
-//            hideShimmer()
-//        }
         binding.shimmerBarber.apply {
             stopShimmer()
             hideShimmer()
-
+            visibility = View.GONE
         }
     }
 

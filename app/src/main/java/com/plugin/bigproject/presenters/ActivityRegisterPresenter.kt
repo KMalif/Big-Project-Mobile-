@@ -27,7 +27,6 @@ class ActivityRegisterPresenter (v : RegisterActivityContract.RegisterActivityVi
                         view?.showToast("Success to Register")
                         view?.successRegister()
                         view?.hideLoading()
-                        println("Success Register" + body)
                     }else{
                         view?.showToast("Data is empty")
                         view?.hideLoading() }

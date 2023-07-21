@@ -8,16 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.plugin.bigproject.R
 import com.plugin.bigproject.activities.DetailWishlistActivity
 import com.plugin.bigproject.adapters.HistoryAdapter
 import com.plugin.bigproject.adapters.WishlistListener
 import com.plugin.bigproject.contracts.FragmentHistoryContract
-import com.plugin.bigproject.contracts.FragmentNewsContract
 import com.plugin.bigproject.databinding.FragmentHistoryBinding
-import com.plugin.bigproject.databinding.FragmentHomeBinding
 import com.plugin.bigproject.models.History
-import com.plugin.bigproject.models.News
 import com.plugin.bigproject.presenters.FragmentHistoryPresenter
 import com.plugin.bigproject.util.Constants
 import java.io.Serializable
@@ -27,6 +23,7 @@ class HistoryFragment : Fragment(), FragmentHistoryContract.View {
     private val binding get() = _binding!!
     private var presenter : FragmentHistoryContract.Presenter? = null
     private lateinit var historyAdapter: HistoryAdapter
+    private var listHistories: List<History> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +40,7 @@ class HistoryFragment : Fragment(), FragmentHistoryContract.View {
     }
 
     override fun attachHistoryToRecycler(listHistory: List<History>) {
+        this.listHistories = listHistory
         binding.RvHistory.apply {
             historyAdapter = HistoryAdapter(listHistory, object : WishlistListener{
                 override fun onWishlistCLick(wishlist: History) {
@@ -50,9 +48,15 @@ class HistoryFragment : Fragment(), FragmentHistoryContract.View {
                         putExtra("wishlist", wishlist as Serializable)
                     })
                 }
+
+                override fun deleteWishlist(id: Int) {
+                    val token = Constants.getToken(requireActivity())
+                    presenter?.deleteWishlist(token, id)
+                }
             })
             layoutManager = LinearLayoutManager(activity)
             adapter = historyAdapter
+            historyAdapter.updateData(listHistory)
         }
     }
 
@@ -75,6 +79,12 @@ class HistoryFragment : Fragment(), FragmentHistoryContract.View {
     override fun showToast(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onItemDelete(wishlist: History) {
+        listHistories = listHistories.filterNot { it.id == wishlist.id }
+        historyAdapter.updateData(listHistories)
+    }
+
 
     override fun showEmpty() {
         binding.WrapEmpty.apply {

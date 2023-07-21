@@ -10,7 +10,8 @@ interface CameraActivityContract {
         fun showToast(message : String)
         fun showLoading()
         fun hideLoading()
-        fun getRecomendation(recomendations : List<Recomendation>, faceShape : String)
+        fun getRecomendation(recomendations : List<Recomendation>, faceShape : String, suggest : String)
+        fun showEmpty()
     }
 
     interface Presenter{

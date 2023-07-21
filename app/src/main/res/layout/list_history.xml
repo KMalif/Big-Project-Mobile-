@@ -31,7 +31,7 @@
             android:text="@string/haircutName"
             android:fontFamily="@font/poppins_bold"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@id/Thumbnail"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -43,11 +43,27 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_medium"
-            android:maxLines="4"
+            android:maxLines="2"
             android:text="@string/Placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/Thumbnail"
             app:layout_constraintTop_toBottomOf="@id/TvHaircutsName" />
+
+        <TextView
+            android:id="@+id/TvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:text="@string/Placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/Thumbnail"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
