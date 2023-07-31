@@ -1,5 +1,6 @@
 package com.plugin.bigproject.fragments
 
+import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -53,18 +54,46 @@ class BarberMapsFragment : Fragment() {
             it.addMarker(MarkerOptions().setPosition(barber).title("Jodi's Barbershop"))
             it.setOnMarkerClickListener(object : MapboxMap.OnMarkerClickListener{
                 override fun onMarkerClick(marker: Marker): Boolean {
-                    val location: Uri = Uri.parse("google.navigation:q=-6.8777395,109.1141334&mode=d")
+                    val location: Uri = Uri.parse("google.navigation:q=${marker.position.latitude}.${marker.position.longitude}&mode=d")
                     val mapIntent = Intent(Intent.ACTION_VIEW, location)
                     mapIntent.setPackage("com.google.android.apps.maps")
-                    try {
-                        startActivity(mapIntent)
-                    } catch (e: ActivityNotFoundException) {
-                        println(e.message)
+
+                    val builder = AlertDialog.Builder(activity)
+                    builder.setTitle("Arahkan ke ${marker.title}")
+                    builder.setMessage("Apakah kamu yakin ?")
+
+                    builder.setPositiveButton("Ya") { dialog, which ->
+                        try {
+                            startActivity(mapIntent)
+                        } catch (e: ActivityNotFoundException) {
+                            println(e.message)
+                        }
                     }
+                    builder.setNegativeButton("Cancel") { dialog, which ->
+                        dialog.cancel()
+                    }
+                    builder.show()
                     return true
                 }
             })
         }
+    }
+
+    private fun showDialog(){
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle("Navigate")
+        builder.setMessage("Are you sure ?")
+
+        builder.setPositiveButton("Yes") { dialog, which ->
+
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, which ->
+            dialog.cancel()
+        }
+
+        builder.show()
+
     }
 
     override fun onDestroyView() {
